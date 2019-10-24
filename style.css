@@ -1,0 +1,32 @@
+body{
+    margin : 2% 10%;
+    background-image: url("img/img4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+}
+
+fieldset{
+    margin-bottom: 2em;
+    border-radius: 8px;
+    border: 1px solid gray;
+}
+
+legend{
+    font-size: 1.2em;
+    color: dimgray;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+section{
+    margin: 0% 20%;
+    background-color: darkgray;
+    height: 100vh;
+    border: 2px solid black;
+}æ
