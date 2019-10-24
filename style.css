@@ -29,4 +29,51 @@ section{
     background-color: darkgray;
     height: 100vh;
     border: 2px solid black;
-}æ
+}
+
+header{
+    border: 1px solid red;
+    min-height: 75px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+}
+#contact{
+    border: solid 1px red;
+    margin-top: 5px;
+}
+
+.container-fluid{
+    /*border: solid 1px red;*/
+    min-height: 500px;
+
+}.contact-text{
+     /*border: solid 1px red;*/
+     min-height: 500px;
+    background-color: lightgray;
+}
+.map{
+    /*border: solid 1px red;*/
+    overflow: hidden;
+    position: relative;
+
+}
+#map-container-2 iframe{
+    /*border: solid 1px red;*/
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+.titre{
+    color:white;
+    background-color: darkred;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-height: 25px;
+}
+.text-resume {
+    text-align: justify;
+}
