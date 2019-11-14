@@ -27,19 +27,19 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../../Home/htlm/accueil.html">Home<span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">Commande<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../../Commandes.html">Commande<span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">Contact us<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../../Contact.html">Contact us<span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">History<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../../A-propos.html">History<span class="sr-only">(current)</span></a>
             </li>
 
         </ul>
@@ -47,30 +47,43 @@
 </nav>
 
 <section>
-    <button class="btn btn-secondary" id="cmd-btn">COMMANDER</button>
-    <div class="row">
-        <div class="col-md-6 accueil-cadre txt-cadre" id="command">
-            <div>
-                <h3 class="display-4">petit texte 1</h3>
-                <p id="left-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias animi asperiores consequatur consequuntur culpa debitis deleniti deserunt error ex expedita fugit id inventore, ipsum iure, nisi officiis qui rem, sint vero? Alias illum nulla perferendis quasi recusandae tenetur, vel.</p>
+    <div>
+        <button class="btn btn-secondary" id="cmd-btn"><a href="../../Commandes.html" class="home-btn-link">COMMANDER</a></button>
+
+        <div class="row">
+            <div class="col-md-6 accueil-cadre txt-cadre" id="command">
+                <div>
+                    <h3 class="display-4">notre histoire</h3>
+                    <p id="left-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias animi asperiores consequatur consequuntur culpa debitis deleniti deserunt error ex expedita fugit id inventore, ipsum iure, nisi officiis qui rem, sint vero? Alias illum nulla perferendis quasi recusandae tenetur, vel.</p>
+                    <button class="btn btn-secondary home-more-btn"><a href="../../A-propos.html" class="home-btn-link">plus...</a></button>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6 accueil-cadre" id="photo-command">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../asset/img/mario.jpg" class="d-block w-100" alt="mario">
+            <div class="col-md-6 accueil-cadre" id="photo-command">
+                <div class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" id="mario">
+<!--            l' image en backgroud css pour responsivité-->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 accueil-cadre" id="photo-pres">
-
-        </div>
-        <div class="col-md-6 accueil-cadre txt-cadre" id="pres">
-            <div>
-                <h3 class="display-4">petit texte 2</h3>
-                <p id="right-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias animi asperiores consequatur consequuntur culpa debitis deleniti deserunt error ex expedita fugit id inventore, ipsum iure, nisi officiis qui rem, sint vero? Alias illum nulla perferendis quasi recusandae tenetur, vel.</p>
+        <div class="row">
+            <div class="col-md-6 accueil-cadre" id="photo-pres">
+                <div class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" id="outer-resto">
+<!--            l' image en backgroud css pour responsivité-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 accueil-cadre txt-cadre" id="pres">
+                <div>
+                    <h3 class="display-4">petit texte 2</h3>
+                    <p id="right-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias animi asperiores consequatur consequuntur culpa debitis deleniti deserunt error ex expedita fugit id inventore, ipsum iure, nisi officiis qui rem, sint vero? Alias illum nulla perferendis quasi recusandae tenetur, vel.</p>
+                    <button class="btn btn-secondary home-more-btn"><a href="../../Commandes.html" class="home-btn-link">plus...</a></button>
+                </div>
             </div>
         </div>
     </div>
