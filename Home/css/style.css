@@ -1,14 +1,85 @@
-html, body{
+
+/*image responsive dans les cadres*/
+
+.carousel-inner{
+
     height: 100%;
+    width: 100%;
+}
+
+#mario{
+    background-image: url("../../img/mario.jpg");
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+#outer-resto{
+    background-image: url("../../img/outher-resto.jpg");
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+/*petite ombre tout en haut*/
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    z-index: 100;
+}
+
+/*animations*/
+
+@keyframes commander{
+    0%{}
+    100%{box-shadow: 0 0 180px 100px rgba(0,0,0,0.75);}
+}
+
+@keyframes hover-cadre {
+    0%{}
+    100%{box-shadow: 0 0 100px 50px rgba(0,0,0,0.75);}
+}
+
+
+/*static*/
+
+/*general*/
+html, body{
+    min-height: 100%;
 }
 
 body{
-    background-image: url("../asset/img/background.jpg");
+    background-image: url("../../img/bg-home.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100%;
-
+    background-position: center;
 }
+
+p{
+    margin:0;
+}
+
+.display-4{
+    padding: 0;
+}
+
+.home-btn-link{
+    c
+}
+
+.home-btn-link:hover{
+    text-decoration: none;
+    color: ;
+}
+
+/*end: general*/
+/*header, navbar and footer*/
 
 header{
     display: flex;
@@ -33,17 +104,30 @@ footer{
     bottom: 0;
     width: 100%;
     height: 100px;
+    margin-top: -100px;
     z-index: 3;
 }
 
+/*end: header, navbar and footer*/
+/* content */
+
 section{
-    margin: 0 15%;
-    background-color: darkgray;
-    height: calc(100% - 300px);
+    margin: 0 auto;
+    height: calc(100vh - 300px);
     position: relative;
-    z-index: 1;
-    box-shadow: 0 0 180px 10px rgba(0,0,0,0.75);
+
+    /*pour centrer les cadres*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
+section>div{
+    height:100%;
+}
+
+/*Le bouton "commander"*/
 
 #cmd-btn{
     position: absolute;
@@ -54,56 +138,107 @@ section{
     height: 80px;
     z-index: 2;
     border-radius:5px;
-    background-color: chartreuse;
+    background-color: #072f36;
+    border-width: 3px;
     padding: 15px;
 }
 
+#cmd-btn:hover{
+    background-color: #323940;
+    animation-name: commander;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+/*Les cadres*/
+
 .row{
-    width:100%;
-    height:50%;
+    width: 1300px;
+    height: 50%;
     margin:0;
+    box-shadow: 0 0 23px 8px rgba(0,0,0,0.75);
+    z-index: 1;
 }
 
 .accueil-cadre{
-    width: 50%;
     padding:0;
     height: 100%;
+    width: 100%;
+    z-index: 0;
 }
 
-p{
-    margin:0;
+.accueil-cadre:hover{
+
+    z-index: 1;
+    animation-name: hover-cadre;
+    animation-duration: 800ms;
+    animation-delay: 200ms;
+    animation-fill-mode: forwards;
 }
 
-.display-4{
-    padding: 0;
-}
 
 .accueil-cadre > *{
     height: 100%;
 }
 
 .txt-cadre{
-    padding: 60px 50px;
+    padding: 30px 25px;
 }
 
-#pres{
-    background-color: red;
-    text-align: right;
+.txt-cadre>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-#photo-pres{
-    background-color: blue;
+.txt-cadre>div>*{
+    margin: 5px 0;
 }
-#photo-command{
-    background-color: green;
+
+.txt-cadre>div>.btn{
+    width: 33%;
 }
+
+/*le cadre à texte en haut à gauche*/
 #command{
-    background-color: orange;
+    background-color: #75939c;
     text-align: left;
 }
 
-@media screen and (max-width: 900px) {
-    section{
-        margin:0;
+/*carousel en haut à droite*/
+#photo-command{
+    background-color: #75939c;
+}
+
+/*carousel en bas à gauche*/
+#photo-pres{
+    background-color: #75939c;
+}
+
+/*le cadre à texte en bas à droite*/
+#pres{
+    background-color: #75939c;
+    text-align: right;
+}
+
+
+/*responsivity*/
+
+@media screen and (max-width: 1300px) {
+    .row{
+        width: 100%;
     }
 }
 
+@media screen and (max-width: 768px) {
+    .row{
+        width: 483px;
+    }
+
+    body{
+        background-color: #0c5460;
+        background-image: none;
+    }
+}
+
+
+/*end: content*/
