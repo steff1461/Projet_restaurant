@@ -1,104 +1,158 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Les pizzas d'Alex</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../font/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../style.css">
-</head>
+<html lang="zxx">
 
-<body>
+    <head>
 
-<header>
-    <h1>Bienvenue à la pizzeria d'Alex !!</h1>
-</header>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <!--Required meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <!-- Bootstrap CSS -->
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="./Accueil.html">Home<span class="sr-only">(current)</span></a>
-            </li>
+        <!--FontAwesome CSS-->
+        <link rel="stylesheet" href="../font/css/font-awesome.min.css">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="./Commandes.html">Commande<span class="sr-only">(current)</span></a>
-            </li>
+        <!--Google Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,700i,900&display=swap" rel="stylesheet">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="./Contact.html">Contact us<span class="sr-only">(current)</span></a>
-            </li>
+        <!-- Main CSS -->
+        <link href="../main.css" rel="stylesheet">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="./Apropos.html">History<span class="sr-only">(current)</span></a>
-            </li>
+        <title>Les pizzas d'Alex</title>
 
-        </ul>
-    </div>
-</nav>
+    </head>
 
-<section>
-    <div>
-        <button class="btn btn-secondary" id="cmd-btn"><a href="./Commandes.html" class="home-btn-link">COMMANDER</a></button>
+    <body class="accueil">
 
-        <div class="row">
-            <div class="col-md-6 accueil-cadre txt-cadre" id="command">
-                <div>
-                    <h3 class="display-4">notre histoire</h3>
-                    <p id="left-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias animi asperiores consequatur consequuntur culpa debitis deleniti deserunt error ex expedita fugit id inventore, ipsum iure, nisi officiis qui rem, sint vero? Alias illum nulla perferendis quasi recusandae tenetur, vel.</p>
-                    <button class="btn btn-secondary home-more-btn"><a href="./Apropos.html" class="home-btn-link">plus...</a></button>
+        <!--Start Navigation-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+            <div class="container-fluid">
+
+                <a href="#" class="navbar-brand"><img class="brand" src="../img/logo.png" alt="brand"></a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Accueil.html">Accueil<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Apropos.html">À propos<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Commandes.html">Menu<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Contact.html">Contact<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 0.0eur<span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
                 </div>
+
             </div>
-            <div class="col-md-6 accueil-cadre" id="photo-command">
-                <div class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" id="mario">
-<!--            l' image en backgroud css pour responsivité-->
+
+        </nav>
+        <!--End Navigation-->
+
+        <!--Start Main-->
+        <main>
+
+            <!--Start Home Section-->
+            <section id="home">
+
+                <!--Start Home Title-->
+                <div class="container main-title">
+                    <div class="row">
+                        <div class="col.ma p-3">
+
+                            <h1>Créez votre propre pizza</h1>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda, numquam.
+                                Aliquam, asperiores maiores! Asperiores, assumenda consectetur dolorem est et fugit id
+                                libero magnam nihil officiis qui quo, sunt, voluptatem.</p>
+
+                            <button type="button" class="btn btn-outline-danger btn-lg command">Commandez</button>
+
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 accueil-cadre" id="photo-pres">
-                <div class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" id="outer-resto">
-<!--            l' image en backgroud css pour responsivité-->
-                        </div>
+                <!--End Home Title-->
+
+            </section>
+            <!--End Home Section-->
+
+        </main>
+        <!--End Main-->
+
+        <!--Start Footer-->
+        <footer id="footer">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-4 marginR">
+                        <h4 class="footer-title">À propos</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo
+                            neque quis! In minus omnis qui temporibus!</p>
+                        <ul class="align-items-baseline social-icon">
+                            <li>
+                                <button type="button" class="btn btn-danger social-media facebook"><i class="fa fa-facebook social-icons" aria-hidden="true"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-danger social-media twitter"><i class="fa fa-twitter social-icons" aria-hidden="true"></i></button>
+
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-danger social-media instagram"><i class="fa fa-instagram social-icons" aria-hidden="true"></i></button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-danger social-media linkedin"><i class="fa fa-linkedin social-icons" aria-hidden="true"></i></button>
+                            </li>
+                        </ul>
                     </div>
+
+                    <div class="col-md-4 marginR">
+                        <h4 class="footer-title">Nos services</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo neque quis! In minus omnis qui temporibus!</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4 class="footer-title">Moyen de paiement</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo
+                            neque quis! In minus omnis qui temporibus!</p>
+                        <ul class="align-items-baseline payement">
+                            <li>
+                                <a href="#footer"><i class="fa fa-cc-mastercard" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#footer"><i class="fa fa-cc-visa" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#footer"><i class="fa fa-paypal" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
-            <div class="col-md-6 accueil-cadre txt-cadre" id="pres">
-                <div>
-                    <h3 class="display-4">petit texte 2</h3>
-                    <p id="right-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias animi asperiores consequatur consequuntur culpa debitis deleniti deserunt error ex expedita fugit id inventore, ipsum iure, nisi officiis qui rem, sint vero? Alias illum nulla perferendis quasi recusandae tenetur, vel.</p>
-                    <button class="btn btn-secondary home-more-btn"><a href="./Commandes.html" class="home-btn-link">plus...</a></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<footer class="footer mb-auto py-3 alert-danger">
-    <div class="container">
-        <i class="fa fa-facebook-square" aria-hidden="true"></i>
-        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-    </div>
-</footer>
+        </footer>
+        <!--End Footer-->
 
-<script src="../bootstrap/js/jquery-3.4.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../script/Accueil.js"></script>
+        <!-- Bootstrap and JQuery JS-->
+        <script src="../script/jquery.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
-</body>
+        <!--Main JS-->
+        <script src="../main.js"></script>
+
+    </body>
+
 </html>

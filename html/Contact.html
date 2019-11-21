@@ -1,89 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../font/css/font-awesome.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    <!--Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="../font/css/font-awesome.min.css">
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,700i,900&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link href="../main.css" rel="stylesheet">
+
+    <title>Les pizzas d'Alex</title>
+
 </head>
+
 <body>
-<header id =" header">
-    <h1>Contact Us</h1>
-</header>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+<!--Start Navigation-->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="./Accueil.html">Home<span class="sr-only">(current)</span></a>
-            </li>
+    <div class="container-fluid">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="./Commandes.html">Commande<span class="sr-only">(current)</span></a>
-            </li>
+        <a href="#" class="navbar-brand"><img class="brand" src="../img/logo.png" alt="brand"></a>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="./Contact.html">Contact us<span class="sr-only">(current)</span></a>
-            </li>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="./Apropos.html">History<span class="sr-only">(current)</span></a>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Accueil.html">Accueil<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Apropos.html">À propos<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Commandes.html">Menu<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="Contact.html">Contact<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 0.0eur<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
 
-        </ul>
     </div>
+
 </nav>
-    <div class="container">
-        <div class = "row">
+<!--End Navigation-->
 
-            <div class="col-md-5 col-sl-12 ">
-                <!-- Google Map -->
+<!--Start Main-->
+<main>
 
-                <div class = "container-fluid m-0 p-0">
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.6360651181717!2d4.863278915731983!3d50.46650137947758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c1996c3315f737%3A0x466cc524b56b28d6!2sRue%20de%20Fer%2C%205000%20Namur!5e0!3m2!1sen!2sbe!4v1571336055615!5m2!1sen!2sbe" width="500" height="500" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                    </div>
+    <!--Start Contact Us Section-->
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="row">
+
+                <!--Start Google Map-->
+                <div class="col-md-6 my-5 align-self-center">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.6591151093407!2d4.87416475145208!3d50.46607219401928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c19913d56d711f%3A0xe4efe46022ddc15b!2sPlace%20de%20l&#39;Ecole%20des%20Cadets%2C%205000%20Namur!5e0!3m2!1sfr!2sbe!4v1574352359445!5m2!1sfr!2sbe" height="516" style="border:0" allowfullscreen></iframe>
                 </div>
+                <!--End Google Map-->
+
+                <!--Start Contact Form-->
+                <div class="col-md-6 my-5">
+
+                    <div class="card">
+
+                        <!--Start Contact Form Header-->
+                        <div class="card-header text-center">
+                            <h4>NOUS CONTACTER</h4>
+                        </div>
+                        <!--End Contact Form Header-->
+
+                        <!--Start Contact Form Body-->
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i><label>Place de l'École des Cadets 6</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <i class="fa fa-phone" aria-hidden="true"></i><label>08 36 65 65 65</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <i class="fa fa-envelope"></i><label>lespizzasdalex@gmail.com</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <i class="fa fa-clock-o"></i></i><label>7/7 , 11:00 - 23:00</label>
+                                </div>
+                            </form>
+                        </div>
+                        <!--End Contact Form Body-->
+                    </div>
+
+                </div>
+                <!--End Contact Form-->
+
             </div>
-            <div class="contact-text col-md-7 col-sl-12">
-                <h5 class="titre">Contact Us</h5>
-                <ul class="list-unstyled mb-0">
-                    <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                        <a href=" mailto: pizza@pizza.be">pizza@pizza.be </a>
-                    </li>
 
-                    <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                        <a href="callto: 01234567890">01234 567 890</a>
-                    </li>
+        </div>
 
+    </section>
+    <!--End Contact Us Section-->
+
+</main>
+<!--End Main-->
+
+<!--Start Footer-->
+<footer id="footer">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 marginR">
+                <h4 class="footer-title">À propos</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo
+                    neque quis! In minus omnis qui temporibus!</p>
+                <ul class="align-items-baseline social-icon">
                     <li>
-                        <p class = text-contact>
-                            <br><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo mi vel tellus suscipit egestas. Nunc ac pharetra velit. Phasellus sollicitudin mi quam, ut fringilla lectus luctus nec. Suspendisse congue, sem porttitor lobortis bibendum, sapien sapien lacinia libero, id interdum felis metus quis dui. Sed mollis convallis laoreet. Nullam nisi nulla, aliquam non dolor vitae, volutpat ullamcorper diam. Fusce tincidunt turpis ut dictum pulvinar. Aliquam erat volutpat. Nam at mauris dui. Integer ultrices, elit sed dapibus aliquet, nisi justo congue justo, quis dictum enim enim vel tellus. Aliquam dui velit, tristique nec sollicitudin vel, accumsan in tellus. Sed ultrices lectus libero, eu rutrum urna auctor eget. Vivamus porta ex ac gravida interdum. Quisque faucibus tincidunt bibendum.
-                        </p>
+                        <button type="button" class="btn btn-danger social-media facebook"><i class="fa fa-facebook social-icons" aria-hidden="true"></i></button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-danger social-media twitter"><i class="fa fa-twitter social-icons" aria-hidden="true"></i></button>
+
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-danger social-media instagram"><i class="fa fa-instagram social-icons" aria-hidden="true"></i></button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-danger social-media linkedin"><i class="fa fa-linkedin social-icons" aria-hidden="true"></i></button>
                     </li>
                 </ul>
             </div>
 
-            <div >
+            <div class="col-md-4 marginR">
+                <h4 class="footer-title">Nos services</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo neque quis! In minus omnis qui temporibus!</p>
             </div>
+
+            <div class="col-md-4">
+                <h4 class="footer-title">Moyen de paiement</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo
+                    neque quis! In minus omnis qui temporibus!</p>
+                <ul class="align-items-baseline payement">
+                    <li>
+                        <a href="#footer"><i class="fa fa-cc-mastercard" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#footer"><i class="fa fa-cc-visa" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#footer"><i class="fa fa-paypal" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
 
+</footer>
+<!--End Footer-->
 
+<!-- Bootstrap and JQuery JS-->
+<script src="../script/jquery.min.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
-
+<!--Main JS-->
+<script src="../main.js"></script>
 
 </body>
+
 </html>
