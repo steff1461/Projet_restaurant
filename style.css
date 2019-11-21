@@ -178,12 +178,12 @@ p{
 }
 
 .home-btn-link{
-    c
+    
 }
 
 .home-btn-link:hover{
     text-decoration: none;
-    color: ;
+    color: gray;
 }
 
 /*end: general*/
