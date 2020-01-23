@@ -78,7 +78,7 @@ section{
 
 #home .main-title{
     text-transform: uppercase;
-    padding-top: 300px;
+    padding-top: 200px;
     padding-bottom: 100px;
     max-width: 45%;
     margin-left: 250px;
@@ -124,6 +124,62 @@ section{
 }
 
 /* --- About Section --- */
+
+#about-section{
+    padding: 0!important;
+}
+
+.gal_parallax{
+    position: inherit!important;
+    background-attachment: fixed;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:460px;
+    z-index: 2;
+}
+
+#gal_parallax_1 {
+    background-image: url("img/about/Parallax_1.jpg");
+}
+
+#gal_parallax_2 {
+    background-image: url("img/about/Parallax_2.jpg");
+}
+
+#gal_parallax_3 {
+    background-image: url("img/about/Parallax_3.jpg");
+}
+
+.aboutArticle{
+    box-shadow: 0 0 43px 15px rgba(0,0,0,0.75);
+    z-index: 3;
+}
+
+.aboutArticleHeader{
+    width: 100%;
+    text-align: center;
+    background-color: #EB3F57;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.gal_txt_parallax{
+    text-align: center;
+    padding: 2px 20% 20px 20%;
+    z-index: 2;
+}
+
+.gal_txt_parallax > p {
+    margin: 10px;
+}
+
+@media (max-width: 850px)
+{
+    .gal_txt_parallax{
+        padding: 5px 5% 25px 5%;
+    }
+}
 
 /* --- Contact Section --- */
 
@@ -256,6 +312,3 @@ ul.social-icon, ul.payement{
 .services-icon .fa{
     margin-right: 1rem;
 }
-
-
-
