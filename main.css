@@ -312,3 +312,57 @@ ul.social-icon, ul.payement{
 .services-icon .fa{
     margin-right: 1rem;
 }
+
+/*-------ROW-COMMANDE-----------------------*/
+
+#command-row{
+
+    border: 2px solid black;
+}
+
+.row div{
+
+    margin-right: 1%;
+    border: 2px solid black;
+}
+
+#comm-lbl-prix{
+
+    width: 50%;
+    margin-left: 20%;
+    margin-bottom: 7%;
+}
+
+
+#comm-btn-add{
+
+    margin-top: 18%;
+    margin-left: 18%;
+}
+#comm-input-quant{
+
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 18%;
+ }
+
+table{
+
+    border-collapse: collapse;
+    width: 50%;
+    text-align: center;
+}
+
+td{
+
+    border: 2px solid black;
+}
+th{
+
+    border: 2px solid black;
+}
+
+tbody{
+
+    border: 2px solid black;
+}
