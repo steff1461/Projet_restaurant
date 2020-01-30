@@ -1,8 +1,21 @@
 function popConfirmation(){
-    var ask = window.confirm("Confirmer la commande ?");
-    if (ask) {
-        window.alert("Merci d'avoir commandé une pizza d'Alex.\n Vous allez maintenant être redirigé vers la page d'accueil.");
-        window.location.href = "./Accueil.html";
+    if (totalCommande.length == 0){
+        window.alert("There is nothing in your commande");
+    }
+    else{
+        let orderString = "Confirmer la commande ?\n";
+        let totalPrice = 0;
+        for (let index = 0; index < totalCommande.length; index++) {
+            const element = totalCommande[index];
+            orderString += "Pizza " + element.name + " x"+ element.quantite + " = " + element.prix + "€\n";
+            totalPrice += element.prix;            
+        }
+        orderString += "Prix total = " + Math.round(totalPrice) + "€";
+        var ask = window.confirm(orderString);
+        if (ask) {
+            window.alert("Merci d'avoir commandé une pizza d'Alex.\n Vous allez maintenant être redirigé vers la page d'accueil.");
+            window.location.href = "./Accueil.html";
+        }
     }
 }
 
