@@ -55,21 +55,112 @@
 </nav>
 <!--End Navigation-->
 
-<main>
 
+
+<!--Row commande-->
+<main id="beg">
+
+
+        <div class="row container-fluid" id="command-row">
+
+            <div class="col-md-1 command-type" id="command-type" >
+
+                <label for="comm-select-type">Catégorie:</label>
+                <select id="comm-select-type" class="comm-select-type">
+                    <option value="Default">-----</option>
+                    <option value="Menu">Menu</option>
+                    <option value="Custom">Custom</option>
+                </select>
+            </div>
+
+                <div class="col-md-1 command-menu" id="command-menu">
+                </div>
+
+                <div class="col-md-1 command-pate" id="command-pate">
+                <label id="comm-lbl-pate">Votre pâte:</label>
+            </div>
+
+            <div class="col-md-1 command-sauce" id="command-sauce">
+                <label  id="comm-lbl-sauce">Votre sauce:</label>
+            </div>
+            
+            <div class="col-md-4 command-ingre" id="command-ingre" >
+                <label  id="comm-lbl-ingre">Vos ingrédient(s):</label><br>
+            </div>
+
+
+
+            <div class="col-md-1 command-quant" id="command-quant">
+                <input type="number" id="comm-input-quant" class="comm-input-quant" min="1" max="20" value="1" >
+            </div>
+
+            <div class="col-md-1 command-prix" id="command-prix">
+                <label for="comm-lbl-prix">Prix total:</label>
+                <input type="text" id="comm-lbl-prix" readonly>
+            </div>
+
+            <div class="col-md-1" id="command-add">
+                <button id="comm-btn-add">Add</button>
+            </div>
+
+        </div>
+
+    
+    <!--End row commande-->
 
     <!--Start foot Section-->
 
-    <section class="col-md-12">
-        <div class="col-md-8">
-                <h3>
-                    Note.
-                </h3>
-            <textarea>
-                Inserer ici des details de la commande.
-            </textarea>
+    <div class="row container-fluid" id="end">
+
+        <div class="col-md-7">
+            <h3>
+                Note.
+            </h3>
+
+            <label>
+                <textarea >
+                    Inserer ici des details de la commande.
+                </textarea>
+            </label>
         </div>
-    </section>
+
+        <div class="col-md-4">
+
+            <h3>Panier:</h3>
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Pizza</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                </tr>
+                </thead>
+
+                <tbody id="comm-panier">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                </tbody>
+
+                <tfoot>
+                <tr>
+                    <td>Total:</td>
+                    <td></td>
+                    <td id="comm-total-panier"></td>
+                </tr>
+                </tfoot>
+            </table>
+
+        </div>
+
+
+    </div>
+
     <!--End Home Section-->
 
 </main>
@@ -128,5 +219,7 @@
 
 </footer>
 
+<script src="../script/Commmandes.js" type=""></script>
+<script src="../script/JSON_LIST.js" type=""></script>
 </body>
 </html>
