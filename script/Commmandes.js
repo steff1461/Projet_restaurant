@@ -62,9 +62,13 @@ function getDefaultRow() {
     //Si menu est sélectionné
     if (options.value === "Menu") {
 
+        if(document.getElementById("comm-label-menu")) {
+            document.getElementById("comm-label-menu").id = "0";
+        }
         document.getElementById("comm-select-type").onchange=selectAfter;
         let lblSelect=document.createElement("label");
         lblSelect.innerHTML = "Votre pizza";
+        lblSelect.id="comm-label-menu";
 
         let selectMenu=document.createElement("select");
         selectMenu.id = "comm-select-menu";
@@ -75,7 +79,7 @@ function getDefaultRow() {
         defaultOption.value = "-----";
         defaultOption.innerHTML = "----";
 
-        document.getElementById("comm-input-quant").onchange=function (){getMenuPrice();verifyInput();};//Quand on
+        document.getElementById("comm-input-quant").onchange=verifyInput;//Quand on
         // change la valeur de
         // l'input
         // quantité le prix se met à jour
@@ -455,8 +459,26 @@ function deleteIngre(){
     //---------------------------------------------
     //---------------GET-INGRE-MENU----------------
     //---------------------------------------------
+
+function getNewMenu(){
+
+    document.getElementById("comm-select-pate").remove();
+    document.getElementById("comm-select-sauce").remove();
+    document.getElementById("comm-select-menu").remove();
+    document.getElementById("comm-label-menu").remove();
+    let divIngre= document.getElementById("command-ingre");
+    let ingre=Object.values( divIngre.getElementsByTagName("select"));
+    ingre.forEach(function (item) {
+       item.remove();
+    });
+
+    getMenuPrice();
+    getDefaultRow();
+}
     function getMenuIngre() {
 
+        document.getElementById("comm-input-quant").onchange=function (){getMenuPrice(); verifyInput();};
+        document.getElementById("comm-select-menu").onchange=getNewMenu;
         let index = document.getElementById("comm-select-menu").selectedIndex;
         let menuOption= document.getElementById("comm-select-menu").options[index].value;
         let menuId =parseInt(menuOption);

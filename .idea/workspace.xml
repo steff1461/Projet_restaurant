@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ed5754b6-886a-47a3-8647-7694cbb13eab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/Commandes.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/Commandes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/Commmandes.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/Commmandes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574970108306</updated>
       <workItem from="1574970110986" duration="818000" />
-      <workItem from="1580405500236" duration="3467000" />
+      <workItem from="1580405500236" duration="6607000" />
     </task>
     <servers />
   </component>
@@ -83,7 +82,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/script/Commmandes.js</url>
-          <line>636</line>
+          <line>655</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
