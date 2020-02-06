@@ -40,19 +40,22 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="numeroVisa">Numéro de la Mastercard</label>
                             <div class="col-sm-5">
-                                <input type="number" class="form-control" id="numeroVisa" placeholder="XXXX-XXXX-XXXX-XXXX">
+                                <input type="text" class="form-control" id="numeroVisa" placeholder="XXXX-XXXX-XXXX-XXXX"
+                                pattern="[0-9]{16}" title="16 chiffres" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="codeVisa">Code de sécurité</label>
                             <div class="col-sm-2">
-                                <input type="number" class="form-control" id="codeVisa" placeholder="XXX">
+                                <input type="text" class="form-control" id="codeVisa" placeholder="XXX"
+                                pattern="[0-9]{3}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="dateVisa">Date de validité</label>
                             <div class="col-sm-2">
-                                <input type="date" class="form-control" id="dateVisa" placeholder="01/20">
+                                <input type="date" class="form-control" id="dateVisa" placeholder="01/20"
+                                min="2020-01" max="2030_01" required>
                             </div>
                         </div>
                         <div class="form-group">
