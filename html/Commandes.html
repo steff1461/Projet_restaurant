@@ -115,14 +115,19 @@
 
         <div class="col-md-7">
             <h3>
-                Note.
+                <input type="checkbox" id="checkcheck" onclick="showAddress()">Livraison à domicile ?</input> 
             </h3>
-
-            <label>
-                <textarea >
-                    Inserer ici des details de la commande.
-                </textarea>
-            </label>
+            <div id="address" style="display:none">
+                <label>Rue</label>
+                <input type="text" id="street" string="test">
+                <label>Numéro</label>
+                <input type="text" id="number" string="test">
+                <br>
+                <label>Code postal</label>
+                <input type="text" id="postcode" string="test">
+                <label>Ville</label>
+                <input type="text" id="city" string="test">
+            </div>
         </div>
 
         <div class="col-md-4">
@@ -155,7 +160,7 @@
                     <td id="comm-total-panier"></td>
                 </tr>
                 </tfoot>
-                <button style="float: right;" onclick="popConfirmation()">Confirmer la commande</button>
+                <button style="float: right;" onclick="evalPostcode()">Confirmer la commande</button>
             </table>
 
         </div>

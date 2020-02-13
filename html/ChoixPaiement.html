@@ -15,6 +15,13 @@
 <div class="container">
     <h2>Choisissez votre manière de payer svp</h2>
 
+    <div id="priceBox"></div>
+    <script>
+        var totalPrice = sessionStorage.getItem('totalPrice');
+        let priceBox = document.getElementById('priceBox');
+        priceBox.innerHTML = "Price to pay: " + totalPrice;
+    </script>
+
     <!-- Trigger the modal with a button -->
 
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Visa</button>

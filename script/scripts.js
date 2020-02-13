@@ -10,39 +10,26 @@ function popConfirmation(){
             orderString += "Pizza " + element.name + " x"+ element.quantite + " = " + element.prix + "€\n";
             totalPrice += element.prix;            
         }
-        orderString += "Prix total = " + Math.round(totalPrice) + "€";
+        orderString += "Prix total = " + (Math.round(totalPrice*100)/100) + "€";
         var ask = window.confirm(orderString);
         if (ask) {
-            window.alert("Merci d'avoir commandé une pizza d'Alex.\n Vous allez maintenant être redirigé vers la page d'accueil.");
-            window.location.href = "./Accueil.html";
+            sessionStorage.setItem('totalPrice', Math.round(totalPrice*100)/100);
+            if (document.getElementById('checkcheck').checked == true){
+                sessionStorage.setItem('aStreet', document.getElementById('street').value);
+                sessionStorage.setItem('aNumber', document.getElementById('number').value);
+                sessionStorage.setItem('aPostcode', document.getElementById('postcode').value);
+                sessionStorage.setItem('aCity', document.getElementById('city').value);
+            }
+            window.alert("Merci d'avoir commandé une pizza d'Alex.\n Vous allez maintenant être redirigé vers la page de paiement.");
+            window.location.href = "./ChoixPaiement.html";
         }
     }
 }
 
-// ADDRESS FORM EXAMPLE
-{/*
-<input type="checkbox" id="checkcheck" onclick="showAddress()">TEST</input>
-<br>
-<form id="addressTest" style="display:none">
-    <label>Rue</label>
-    <input type="text" id="street" string="test">
-    <br>
-    <label>Numéro</label>
-    <input type="text" id="number" string="test">
-    <label>Code postal</label>
-    <input type="text" id="postcode" string="test">
-    <br>
-    <label>Ville</label>
-    <input type="text" id="city" string="test">
-    <button>Send</button>
-</form> 
-<script src="../script/scripts.js"></script>
-*/}
-
 // to make the address form appear
 function showAddress(){
     var checkBox = document.getElementById('checkcheck');
-    var text = document.getElementById('addressTest');
+    var text = document.getElementById('address');
 
     if (checkBox.checked == true){
         text.style.display = 'block';
@@ -52,12 +39,16 @@ function showAddress(){
 }
 
 // to use directly on the postcode field of the address form
-var pcfield = document.getElementById('postcode');
-
-pcfield.addEventListener("keyup", function(event){
-    if (pcfield.value < 1000 || pcfield.value > 5000){
-        pcfield.setCustomValidity("Ce code postal n'est pas dans notre zone de livraison!");
+function evalPostcode(){
+    var pcfield = document.getElementById('postcode');
+    var checkBox = document.getElementById('checkcheck');
+    if (checkBox.checked == true){
+        if (pcfield.value < 1000 || pcfield.value > 5000){
+            window.alert("Ce code postal n'est pas dans notre zone de livraison!");
+        }else{
+            popConfirmation();
+        };
     }else{
-        pcfield.setCustomValidity("");
+        popConfirmation();
     }
-});
+}
