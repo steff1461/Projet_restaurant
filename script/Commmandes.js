@@ -5,6 +5,26 @@ let selectType= document.getElementById("comm-select-type");
 let totalCommande=[];
 let cpt=0;
 
+let inputQuant=document.getElementById("comm-input-quant");
+inputQuant.onchange=verifyInput;
+
+
+function selectAfter(){
+
+    getNewRow();
+    document.getElementById("row"+cpt).remove();
+
+
+}
+function verifyInput(){
+
+    let inputQuant= document.getElementById("comm-input-quant");
+    if(inputQuant.value<1){
+
+        inputQuant.title="Veuillez sélectionner une valeur positive";
+        inputQuant.value =1;
+}
+}
 selectType.onchange=getDefaultRow;
 document.getElementById("comm-btn-add").onclick=function (){getNewRow(); getPizza(this);};
 
@@ -42,8 +62,13 @@ function getDefaultRow() {
     //Si menu est sélectionné
     if (options.value === "Menu") {
 
+        if(document.getElementById("comm-label-menu")) {
+            document.getElementById("comm-label-menu").id = "0";
+        }
+        document.getElementById("comm-select-type").onchange=selectAfter;
         let lblSelect=document.createElement("label");
         lblSelect.innerHTML = "Votre pizza";
+        lblSelect.id="comm-label-menu";
 
         let selectMenu=document.createElement("select");
         selectMenu.id = "comm-select-menu";
@@ -54,7 +79,9 @@ function getDefaultRow() {
         defaultOption.value = "-----";
         defaultOption.innerHTML = "----";
 
-        document.getElementById("comm-input-quant").onchange=getMenuPrice;//Quand on change la valeur de l'input
+        document.getElementById("comm-input-quant").onchange=verifyInput;//Quand on
+        // change la valeur de
+        // l'input
         // quantité le prix se met à jour
 
         selectMenu.onchange = function () {getMenuIngre();getMenuPrice()}; //Quand on sélectionne une pizza
@@ -78,6 +105,7 @@ function getDefaultRow() {
         //si custom est sélectionné
 
     else if (options.value === "Custom") {
+        document.getElementById("comm-select-type").onchange=selectAfter;
 
         let selectIngre= document.createElement("select");
         selectIngre.id = "comm-select-ingre";
@@ -126,7 +154,7 @@ function getDefaultRow() {
 
         selectPate.onchange = getCustomPrice;
         selectSauce.onchange = getCustomPrice;
-        document.getElementById("comm-input-quant").onchange=getCustomPrice;
+        document.getElementById("comm-input-quant").onchange=function (){getCustomPrice();verifyInput();};
         btnAddIngre.onclick = addIngre;
         getCustomPrice()
     }
@@ -159,6 +187,7 @@ function getNewRow(){
     labelNewType.innerHTML="Catégorie:";
 
     let selectNewType= document.createElement("select");
+    document.getElementById("comm-select-type").disabled=true;
     document.getElementById("comm-select-type").id="row"+cpt+"type";
     selectNewType.className="comm-select-type";
     selectNewType.id="comm-select-type";
@@ -430,8 +459,26 @@ function deleteIngre(){
     //---------------------------------------------
     //---------------GET-INGRE-MENU----------------
     //---------------------------------------------
+
+function getNewMenu(){
+
+    document.getElementById("comm-select-pate").remove();
+    document.getElementById("comm-select-sauce").remove();
+    document.getElementById("comm-select-menu").remove();
+    document.getElementById("comm-label-menu").remove();
+    let divIngre= document.getElementById("command-ingre");
+    let ingre=Object.values( divIngre.getElementsByTagName("select"));
+    ingre.forEach(function (item) {
+       item.remove();
+    });
+
+    getMenuPrice();
+    getDefaultRow();
+}
     function getMenuIngre() {
 
+        document.getElementById("comm-input-quant").onchange=function (){getMenuPrice(); verifyInput();};
+        document.getElementById("comm-select-menu").onchange=getNewMenu;
         let index = document.getElementById("comm-select-menu").selectedIndex;
         let menuOption= document.getElementById("comm-select-menu").options[index].value;
         let menuId =parseInt(menuOption);
@@ -482,13 +529,18 @@ function getMenuPrice() {
     let index = selectMenu.selectedIndex;
     let id = parseInt(selectMenu.options[index].value);
     let totalPrice=0;
-    let totalNumber=document.getElementById("comm-input-quant");
+    let inputQuant=document.getElementById("comm-input-quant");
+    let totalNumber=inputQuant.value;
+    if(totalNumber<1){
+
+        totalNumber=1;
+    }
 
     get_Menubyid(id).ingredients.forEach(function (item) {
         totalPrice+=get_Ingrebyid(item).prix;
     });
 
-    totalPrice=(totalPrice*totalNumber.value).toFixed(2);
+    totalPrice=(totalPrice*totalNumber).toFixed(2);
 
     let lblPrix=document.getElementById("comm-lbl-prix");
     lblPrix.value=totalPrice;
@@ -510,8 +562,12 @@ function getCustomPrice() {
     let idSauce = parseInt(selectSauce.options[indexSauce].value);
     let lblPrix=document.getElementById("comm-lbl-prix");
     let divIngre=document.getElementById("command-ingre");
-    let totalNumber=document.getElementById("comm-input-quant");
+    let inputQuant=document.getElementById("comm-input-quant");
+    let totalNumber=inputQuant.value;
+    if(totalNumber<1){
 
+        totalNumber=1;
+    }
     totalPrice += get_Ingrebyid(idPate).prix + get_Ingrebyid(idSauce).prix;
 
     let tabIngre =divIngre.getElementsByClassName("newIngre");
@@ -521,7 +577,7 @@ function getCustomPrice() {
         totalPrice+=get_Ingrebyid(tabIngre[i]).prix;
     }
 
-    totalPrice=(totalPrice*totalNumber.value).toFixed(2);
+    totalPrice=(totalPrice*totalNumber).toFixed(2);
     lblPrix.value=totalPrice;
     lblPrix.innerHTML=totalPrice.toString();
 }

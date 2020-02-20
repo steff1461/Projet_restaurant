@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Choix paiement commande</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Choisissez votre manière de payer svp</h2>
+
+    <div id="priceBox"></div>
+    <script>
+        var totalPrice = sessionStorage.getItem('totalPrice');
+        let priceBox = document.getElementById('priceBox');
+        priceBox.innerHTML = "Price to pay: " + totalPrice;
+    </script>
+
+    <!-- Trigger the modal with a button -->
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Visa</button>
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Paypal</button>
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Ogone</button>
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal4">Mastercard</button>
+
+    <!-- Modal Visa -->
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">Fermer</button>
+                    <h4 class="modal-title">Paiement par Carte Visa</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="/action_page.php">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="numeroVisa">Numéro de la Carte Visa</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="numeroVisa" placeholder="XXXX-XXXX-XXXX-XXXX"
+                                pattern="[0-9]{16}" title="16 chiffres" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="codeVisa">Code de sécurité</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="codeVisa" placeholder="XXX"
+                                pattern="[0-9]{3}" title="Code de trois chiffres sur le dos de la carte" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Date de validité</label>
+                            <div class="col-sm-2">
+                                <span>
+                                    <label for="monthVisa">Mois :</label>
+                                    <select id="monthVisa" name="month">
+                                        <option selected>Janvier</option>
+                                        <option>Février</option>
+                                        <option>Mars</option>
+                                        <option>Avril</option>
+                                        <option>Mai</option>
+                                        <option>Juin</option>
+                                        <option>Juillet</option>
+                                        <option>Août</option>
+                                        <option>Septembre</option>
+                                        <option>Octobre</option>
+                                        <option>Novembre</option>
+                                        <option>Décembre</option>
+                                     </select>
+                                </span>
+                                <span>
+                                    <label for="year">Année :</label>
+                                    <select id="year" name="year">
+                                        <option>2020</option>
+                                        <option>2021</option>
+                                        <option>2022</option>
+                                        <option>2023</option>
+                                        <option>2024</option>
+                                        <option>2025</option>
+                                        <option>2026</option>
+                                        <option>2027</option>
+                                        <option>2028</option>
+                                        <option>2029</option>
+                                        <option>2030</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Paypal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">Fermer</button>
+                    <h4 class="modal-title">Paiement par compte Paypal</h4>
+                </div>
+                <div class="modal-body">
+                    <p>En cliquant, <a href="https://www.paypal.com/"> ici </a> vous serez redirigé vers le site de Paypal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ogone -->
+    <div class="modal fade" id="myModal3" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">Fermer</button>
+                    <h4 class="modal-title">Paiement par le site Ogone</h4>
+                </div>
+                <div class="modal-body">
+                    <p>En cliquant, <a href="https://www.ingenico.com/"> ici </a>vous serez redirigé vers le site d'Ogone</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Mastercard -->
+    <div class="modal fade" id="myModal4" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">Fermer</button>
+                    <h4 class="modal-title">Paiement par Mastercard</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="/action_page.php">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="numeroMc">Numéro de la Mastercard</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="numeroMc" placeholder="XXXX-XXXX-XXXX-XXXX"
+                                       pattern="[0-9]{16}" title="16 chiffres" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="codeMc">Code de sécurité</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="codeMc" placeholder="XXX"
+                                       pattern="[0-9]{3}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Date de validité</label>
+                            <div class="col-sm-2">
+                                <span>
+                                    <label for="monthMc">Mois :</label>
+                                    <select id="monthMc" name="month">
+                                        <option selected>Janvier</option>
+                                        <option>Février</option>
+                                        <option>Mars</option>
+                                        <option>Avril</option>
+                                        <option>Mai</option>
+                                        <option>Juin</option>
+                                        <option>Juillet</option>
+                                        <option>Août</option>
+                                        <option>Septembre</option>
+                                        <option>Octobre</option>
+                                        <option>Novembre</option>
+                                        <option>Décembre</option>
+                                     </select>
+                                </span>
+                                <span>
+                                    <label for="year">Année :</label>
+                                    <select id="year" name="year">
+                                        <option>2020</option>
+                                        <option>2021</option>
+                                        <option>2022</option>
+                                        <option>2023</option>
+                                        <option>2024</option>
+                                        <option>2025</option>
+                                        <option>2026</option>
+                                        <option>2027</option>
+                                        <option>2028</option>
+                                        <option>2029</option>
+                                        <option>2030</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
