@@ -1,10 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <!--Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="../font/css/font-awesome.min.css">
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,700i,900&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link href="../main.css" rel="stylesheet">
+    <link href="../tempAdmin.css" rel="stylesheet">
+    <title>Page d'administraton</title>
+
 </head>
 <body>
-$END$
+
+    <!--Start Navigation-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+        <div class="container-fluid">
+
+            <a href="#" class="navbar-brand"><img class="brand" src="../img/logo.png" alt="brand"></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Accueil.html">Accueil<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Apropos.html">À propos<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Commandes.html">Menu<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 0.0eur<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+    <!--End Navigation-->
+    <!-- Admin -->
+
+    <section id="admin-section">
+        <div id="create-ing-div" class="container">
+
+            <h3 class="display-4 admin-feature-title">Ajouter de nouveaux ingrédients</h3>
+
+            <!--    ROW d'interraction avec les ingrédients    -->
+            <div class="row ing-row">
+                <!-- partie dans laquelle on crée un ingrédient -->
+                <div class="col-sm-6 admin-frame ">
+                    <div class="create-ing-cont">
+
+                        <form onsubmit="createIng()" class="create-ing-frame">
+                            <div class="ing-control">
+                                <label for="ingredient" class="admin-label">Nom</label>
+                                <div class="admin-inp-cont">
+                                    <input type="text" class="admin-control" id="ingredient" name="ingredient">
+                                </div>
+                            </div>
+                            <div class="ing-control">
+                                <label for="prix-ing" class="admin-label">Coût</label>
+                                <div class="admin-inp-cont">
+                                    <div class="control-ind">
+                                        <i class="fa fa-eur" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="text" class="admin-control price-control" id="prix-ing" name="prix-ing">
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="input-group select-cat-cont">
+                                    <select class="custom-select" id="select-cat">
+                                        <option selected>Catégorie...</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary admin-btn">create</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+                <!-- Partie dans laquelle on récupère des ingrédients -->
+                <div class="col-sm-6 admin-frame">
+                    <!-- Les éléments sont chargés au document.ready (pas fait)-->
+                    <select class="custom-select" id="ing-list" multiple>
+                            <!-- Liste d'ingrédient chargé par JS (Admin.js)-->
+                    </select>
+                    <div class="select-btn-cont">
+                        <!-- si update, modale avec un formulaire nom/cout (pas fait) -->
+                        <!-- Button trigger modal -->
+                        <button class="btn btn-warning admin-btn" data-toggle="modal" onclick="setupUpdateModalIng(ingListId, ingUpdateModalId)">
+                            update
+                        </button>
+
+                        <!-- Modale formulaire -->
+                        <div class="modal fade" id="update-ing-modal" tabindex="-1" role="dialog" aria-labelledby="ing-update-label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="ing-update-label">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <div>
+                                                <label for="update-ing-name">Nom:</label>
+                                                <input type="text" id="update-ing-name" name="update-ing-name" value=" - ">
+                                            </div>
+                                            <div>
+                                                <label for="update-ing-cost">Cout:</label>
+                                                <input type="text" id="update-ing-cost" name="update-ing-cost" value=" - ">
+                                            </div>
+                                            <input type="number" id="update-ing-id" name="update-ing-id" value="0" hidden>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- si delete, le supprime de la liste et de la DB (fait pur la liste, reste faire pur la DB) -->
+                        <button class="btn btn-danger admin-btn" onclick="deleteSelectedFromIngList(ingListId)">delete</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- End Admin -->
+    <!--Start Footer-->
+    <footer id="footer">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 marginR">
+                    <h4 class="footer-title">À propos</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo
+                        neque quis! In minus omnis qui temporibus!</p>
+                    <ul class="align-items-baseline social-icon">
+                        <li>
+                            <button type="button" class="btn btn-danger social-media facebook"><i class="fa fa-facebook social-icons" aria-hidden="true"></i></button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-danger social-media twitter"><i class="fa fa-twitter social-icons" aria-hidden="true"></i></button>
+
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-danger social-media instagram"><i class="fa fa-instagram social-icons" aria-hidden="true"></i></button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-danger social-media linkedin"><i class="fa fa-linkedin social-icons" aria-hidden="true"></i></button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 marginR">
+                    <h4 class="footer-title">Nos services</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo neque quis! In minus omnis qui temporibus!</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h4 class="footer-title">Moyen de paiement</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis, delectus esse illo
+                        neque quis! In minus omnis qui temporibus!</p>
+                    <ul class="align-items-baseline payement">
+                        <li>
+                            <a href="#footer"><i class="fa fa-cc-mastercard" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#footer"><i class="fa fa-cc-visa" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#footer"><i class="fa fa-paypal" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+    <!--End Footer-->
+
+    <!-- Bootstrap and JQuery JS-->
+    <script src="../script/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!--Main JS-->
+    <script src="../script/JSON_LIST.js"></script>
+    <script src="../script/Admin.js"></script>
+
 </body>
 </html>
