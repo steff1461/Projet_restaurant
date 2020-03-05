@@ -65,7 +65,7 @@ function getDefaultRow() {
         document.getElementById("command-menu").appendChild(selectMenu);
         document.getElementById("command-row").insertBefore(divSelectMenu, divPates);
 
-        getAllMenu().forEach(function (item) {
+        get_Allmenu().forEach(function (item) {
 
             let options = document.createElement("option");
             options.value = item.id;
@@ -87,7 +87,7 @@ function getDefaultRow() {
 
         selectIngre.appendChild(defaultValue);
 
-        getIngByCat(0).forEach(function (item) {
+        get_Ingrebycat(0).forEach(function (item) {
 
             let optionPate = document.createElement("option");
             optionPate.value = item.id;
@@ -95,7 +95,7 @@ function getDefaultRow() {
             selectPate.appendChild(optionPate);
         });
 
-        getIngByCat(2).forEach(function (item) {
+        get_Ingrebycat(2).forEach(function (item) {
 
             let optionSauce = document.createElement("option");
             optionSauce.value = item.id;
@@ -103,7 +103,7 @@ function getDefaultRow() {
             selectSauce.appendChild(optionSauce);
         });
 
-        getAllIng().forEach(function (item) {
+        get_Allingre().forEach(function (item) {
 
 
             if (item.cat_id !== 0 && item.cat_id !== 2) {
@@ -415,8 +415,8 @@ function deleteIngre(){
             btnDel.className = "comm-btnDel";
             btnDel.onclick = deleteIngre;
 
-            option.value = getIngById(id).id;
-            option.innerHTML = getIngById(id).name;
+            option.value = get_Ingrebyid(id).id;
+            option.innerHTML = get_Ingrebyid(id).name;
             option.className = "newIngre";
 
             selectNewIngre.appendChild(option);
@@ -445,28 +445,28 @@ function deleteIngre(){
         let optionSauce = document.createElement("option");
         selectSauce.appendChild(optionSauce);
 
-        getMenuById(menuId).ingredients.forEach(function (item) {
+        get_Menubyid(menuId).ingredients.forEach(function (item) {
 
         let divIngre = document.getElementById("command-ingre");
 
-        if (getIngById(item).cat_id === 0) {
+        if (get_Ingrebyid(item).cat_id === 0) {
 
-            optionPate.value = getIngById(item).id;
-            optionPate.innerHTML = getIngById(item).name;
+            optionPate.value = get_Ingrebyid(item).id;
+            optionPate.innerHTML = get_Ingrebyid(item).name;
         }
 
-        else if (getIngById(item).cat_id === 2) {
+        else if (get_Ingrebyid(item).cat_id === 2) {
 
-            optionSauce.value = getIngById(item).id;
-            optionSauce.innerHTML = getIngById(item).name;
+            optionSauce.value = get_Ingrebyid(item).id;
+            optionSauce.innerHTML = get_Ingrebyid(item).name;
         }
 
         else {
 
             let select = document.createElement("select");
             let option = document.createElement("option");
-            option.value = getIngById(item).id;
-            option.innerHTML = getIngById(item).name;
+            option.value = get_Ingrebyid(item).id;
+            option.innerHTML = get_Ingrebyid(item).name;
             select.appendChild(option);
             divIngre.appendChild(select);
         }
@@ -484,8 +484,8 @@ function getMenuPrice() {
     let totalPrice=0;
     let totalNumber=document.getElementById("comm-input-quant");
 
-    getMenuById(id).ingredients.forEach(function (item) {
-        totalPrice+=getIngById(item).prix;
+    get_Menubyid(id).ingredients.forEach(function (item) {
+        totalPrice+=get_Ingrebyid(item).prix;
     });
 
     totalPrice=(totalPrice*totalNumber.value).toFixed(2);
@@ -512,13 +512,13 @@ function getCustomPrice() {
     let divIngre=document.getElementById("command-ingre");
     let totalNumber=document.getElementById("comm-input-quant");
 
-    totalPrice += getIngById(idPate).prix + getIngById(idSauce).prix;
+    totalPrice += get_Ingrebyid(idPate).prix + get_Ingrebyid(idSauce).prix;
 
     let tabIngre =divIngre.getElementsByClassName("newIngre");
 
     for (let i = 0; i <tabIngre.length ; i++) {
 
-        totalPrice+=getIngById(tabIngre[i]).prix;
+        totalPrice+=get_Ingrebyid(tabIngre[i]).prix;
     }
 
     totalPrice=(totalPrice*totalNumber.value).toFixed(2);
@@ -544,7 +544,7 @@ function getPizza(arg) {
             id:cpt,
             prix: getMenuPricebyId(parseInt(menuId)),
             ingredients:getMenuIngrebyId(parseInt(menuId)),
-            name:getMenuById(parseInt(menuId)).name,
+            name:get_Menubyid(parseInt(menuId)).name,
             quantite:quantity
         };
         totalCommande.push(pizza);
@@ -566,8 +566,8 @@ function getPizza(arg) {
         let totalPrice=0;
 
 
-        tabIngre.push(getIngById(pateId));
-        tabIngre.push(getIngById(sauceId));
+        tabIngre.push(get_Ingrebyid(pateId));
+        tabIngre.push(get_Ingrebyid(sauceId));
 
 
         let divIngre= Object.values(row.getElementsByClassName("col-md-4 command-ingre"));
@@ -577,7 +577,7 @@ function getPizza(arg) {
 
         tabIngreOptions.forEach(function (item) {
 
-           tabIngre.push(getIngById(parseInt(item.value)));
+           tabIngre.push(get_Ingrebyid(parseInt(item.value)));
 
         });
 
