@@ -367,10 +367,10 @@ function getMenuById(arg){
 
 function getMenuIngrebyId( arg){
     let tabIngre=[];
-    get_Menubyid(arg).ingredients.forEach(function(item){
+    getMenuById(arg).ingredients.forEach(function(item){
 
 
-        tabIngre.push(get_Ingrebyid(item));
+        tabIngre.push(getIngById(item));
     });
 
     return tabIngre;
@@ -392,7 +392,7 @@ function create_ingre(name,prix,cat_id){
 
     let ingre={
 
-        id:get_Allingre().length,
+        id:getAllIng().length,
         name:name,
         prix:prix,
         cat_id:cat_id
@@ -405,13 +405,13 @@ function create_ingre(name,prix,cat_id){
 function update_ingr(id,name,prix){
 
 
-    get_Ingrebyid(id).name=name;
-    get_Ingrebyid(id).prix=prix;
+    getIngById(id).name=name;
+    getIngById(id).prix=prix;
 }
 //
-// get_Menubyid(2).ingredients.forEach(function (item) {
+// getMenuById(2).ingredients.forEach(function (item) {
 //
-//     console.log(get_Ingrebyid(item).name);
+//     console.log(getIngById(item).name);
 //
 // });
 
