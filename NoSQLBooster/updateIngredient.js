@@ -1,1 +1,0 @@
-db.getCollection('ingredient').update({}, {$set: {"isdeleted": false}},false,true)

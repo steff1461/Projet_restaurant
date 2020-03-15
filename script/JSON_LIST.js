@@ -1,334 +1,71 @@
+
+
 let tab_temp_result=[];
 let temp_result;
+let ingredients;
 
 
-let menu = [
 
-    {
-        id:0,
-        name:"Kebab",
-        ingredients:[1,3,12,13,9,20]
-    }
-    ,
-    {
-        id:1,
-        name:"Bolognaise",
-        ingredients:[0,31,10,3,14]
-    }
-    ,
-    {
-        id:2,
-        name:"Hawai",
-        ingredients:[0,24,10,3,19,21]
-    }
-    ,
-    {
-        id:3,
-        name:"Végétarienne",
-        ingredients:[1,3,10,14,17,19,5,5,4,5,20]
-    }
-    ,
-    {
-        id:4,
-        name:"Chevrette",
-        ingredients:[2,27,11,3,4,19,20]
-    }
-];
+let menu;
 
-let categories=[
+    $(document).ready(function() {
 
-    {
-        id:0,
-        name:"Pâtes",
+        $.ajax({
 
-    }
-    ,
-    {
-        id:1,
-        name:"Fromages"
+            url: 'http://localhost:3000/getPizza',
+            type: 'GET',
+            dataType: 'json',
 
-    }
-    ,
-    {
-        id:2,
-        name:"Sauces",
+            success: function (response) {
 
-    }
-    ,
-    {
-        id:3,
-        name:"Condiments",
 
-    }
-    ,
-    {
-        id:4,
-        name:"Viandes",
+                menu=response;
+            },
 
-    }
+            error: function () {
 
-];
-
-let ingredients = [
-
-    {
-        id: 0,
-        name: "Pâte classique",
-        prix: 1.8,
-        cat_id:0
-    }
-    ,
-    {
-        id: 1,
-        name: "Pâte croustillante",
-        prix: 2,
-        cat_id:0
-    }
-    ,
-    {
-        id: 2,
-        name: "Pâte USA",
-        prix: 1.9,
-        cat_id:0
-    }
-    ,
-    {
-        id: 3,
-        name: "Fromage",
-        prix: 1.8,
-        cat_id:1
-    }
-    ,
-    {
-        id: 4,
-        name: "Chèvre",
-        prix: 2,
-        cat_id:1
-    }
-    ,
-    {
-        id: 5,
-        name: "Brie",
-        prix: 1.9,
-        cat_id:1
-    }
-    ,
-    {
-        id: 6,
-        name: "Parmesan",
-        prix: 1.6,
-        cat_id:1
-    },
-    {
-        id: 7,
-        name: "Camembert",
-        prix: 1.6,
-        cat_id:1
-    },
-    {
-        id: 8,
-        name: "Reblochon",
-        prix: 1.6,
-        cat_id:1
-    },
-
-    {
-        id: 9,
-        name: "Feta",
-        prix: 2.2,
-        cat_id:1
-    }
-    ,
-
-    {
-        id: 10,
-        name: "Tomate",
-        prix: 1.8,
-        cat_id:2
-    }
-    ,
-    {
-        id: 11,
-        name: "Fromage",
-        prix: 2,
-        cat_id:2
-    }
-    ,
-    {
-        id: 12,
-        name: "Ail",
-        prix: 1.9,
-        cat_id:2
-    }
-    ,
-    {
-        id: 13,
-        name: "Crème",
-        prix: 1.6,
-        cat_id:2
-    }
-    ,
-    {
-        id: 14,
-        name: "Champignons",
-        prix: 3,
-        cat_id:3
-    }
-    ,
-    {
-        id: 15,
-        name: "Anchois",
-        prix: 2.5,
-        cat_id:3
-    }
-    ,
-    {
-        id: 16,
-        name: "Olives",
-        prix: 2.3,
-        cat_id:3
-    }
-    ,
-    {
-        id: 17,
-        name: "Poivrons",
-        prix: 2.9,
-        cat_id:3
-    }
-    ,
-    {
-        id: 18,
-        name: "Oeufs",
-        prix: 3,
-        cat_id:3
-    }
-    ,
-    {
-        id: 19,
-        name: "Origan",
-        prix: 3.5,
-        cat_id:3
-    }
-    ,
-    {
-        id: 20,
-        name: "Oignons",
-        prix: 3.7,
-        cat_id:3
-
-    }
-    ,
-    {
-        id: 21,
-        name: "Ananas",
-        prix: 3,
-        cat_id:3
-    }
-    ,
-    {
-        id: 22,
-        name: "Pomme de terre",
-        prix: 2.8,
-        cat_id:3
-
-    }
-    ,
-    {
-        id: 23,
-        name: "Kebab",
-        prix: 3,
-        cat_id:4
-    }
-    ,
-    {
-        id: 24,
-        name: "Jambon",
-        prix: 2.5,
-        cat_id:4
-    }
-    ,
-    {
-        id: 25,
-        name: "Poulet",
-        prix: 2.3,
-        cat_id:4
-    }
-    ,
-    {
-        id: 26,
-        name: "Boeuf",
-        prix: 2.9,
-        cat_id:4
-    }
-    ,
-    {
-        id: 27,
-        name: "Lardon",
-        prix: 3,
-        cat_id:4
-    }
-    ,
-    {
-        id: 28,
-        name: "Saumon",
-        prix: 3.5,
-        cat_id:4
-    }
-    ,
-    {
-        id: 29,
-        name: "Scampis",
-        prix: 3.7,
-        cat_id:4
-    }
-    ,
-    {
-        id: 30,
-        name: "Merguez",
-        prix: 3,
-        cat_id:4
-    }
-    ,
-    {
-        id: 31,
-        name: "Viande hachée",
-        prix: 2.8,
-        cat_id:4
-    }
-    ,
-    {
-        id: 32,
-        name: "Thon",
-        prix: 3,
-        cat_id:4
-    }
-];
-
-function get_Allcat() {
-
-    return categories;
-}
-
-function get_Catbyid(arg){
-
-    categories.forEach(function (item) {
-        if(item.id===arg){
-
-            temp_result=item;
-        }
+                alert("erreur");
+            }
+        });
     });
-    return temp_result;
-}
 
-function get_Allingre(){
+
+
+   $(document).ready(function(){
+
+        $.ajax({
+
+            url:'http://localhost:3000/getIngredient',
+            type:'GET',
+            dataType:'json',
+            success : function (response) {
+
+                ingredients=response;
+            },
+
+            error : function () {
+
+            },
+
+            complete : function () {
+
+            }
+        });
+
+    });
+
+
+
+
+function getAllIng(){
 
     return ingredients;
 }
 
-function get_Ingrebyid(arg){
+function getIngById(arg){
 
     ingredients.forEach(function (item) {
-        if(item.id===arg){
+        if(item._id===arg){
 
             temp_result=item;
         }
@@ -337,30 +74,28 @@ function get_Ingrebyid(arg){
     return temp_result;
 }
 
-
-function get_Ingrebycat(arg){
+function getIngByCat(arg){
     tab_temp_result=[];
     ingredients.forEach(function (item) {
 
-        if(item.cat_id===arg){
+
+        if(item.categorie===arg){
             tab_temp_result.push(item);
         }
     });
     return tab_temp_result;
 }
 
-function get_Allmenu(){
+function getAllMenu(){
 
     return menu;
 }
 
-function get_Menubyid(arg){
-
+function getMenuById(arg){
 
     menu.forEach( function (item) {
 
-        if(item.id===arg){
-
+        if(item._id===arg){
             temp_result=item;
         }
     });
@@ -370,10 +105,10 @@ function get_Menubyid(arg){
 
 function getMenuIngrebyId( arg){
     let tabIngre=[];
-    get_Menubyid(arg).ingredients.forEach(function(item){
+    getMenuById(arg).composition.forEach(function(item){
 
 
-        tabIngre.push(get_Ingrebyid(item));
+        tabIngre.push(getIngById(item._id));
     });
 
     return tabIngre;
@@ -391,30 +126,5 @@ function getMenuPricebyId(arg){
 }
 
 
-function create_ingre(name,prix,cat_id){
 
-    let ingre={
-
-        id:get_Allingre().length,
-        name:name,
-        prix:prix,
-        cat_id:cat_id
-    };
-
-    ingredients.push(ingre);
-}
-
-
-function update_ingr(id,name,prix){
-
-
-    get_Ingrebyid(id).name=name;
-    get_Ingrebyid(id).prix=prix;
-}
-//
-// get_Menubyid(2).ingredients.forEach(function (item) {
-//
-//     console.log(get_Ingrebyid(item).name);
-//
-// });
 
