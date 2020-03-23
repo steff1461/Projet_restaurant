@@ -11,8 +11,7 @@ let cpt=0;
 
 
 selectType.onchange=getDefaultRow;
-document.getElementById("comm-btn-add").onclick=function (){getNewRow(); getPizza(this);};
-
+btnAdd.onclick=function (){getNewRow(); getPizza(this);};
 inputQuant.onchange=verifyInput;
 selectType.onchange=getDefaultRow;
 btnAdd.onclick=function (){getNewRow(); getPizza(this);};
@@ -48,7 +47,6 @@ function getDefaultRow() {
     let selectType=document.getElementById("comm-select-type");
     selectType.onchange=selectAfter;
 
-
     let indexType = selectType.selectedIndex;
     let optionType = selectType.options[indexType];
 
@@ -56,14 +54,9 @@ function getDefaultRow() {
     //Si menu est sélectionné
     if (optionType.value === "Menu") {
 
-
-        if(document.getElementById("comm-label-menu")) {
-            document.getElementById("comm-label-menu").id = "0";
-        }
-
-
         let lblSelect=document.createElement("label");
         lblSelect.innerHTML = "Votre pizza";
+        lblSelect.id="comm-label-menu";
 
         let selectMenu=document.createElement("select");
         selectMenu.id = "comm-select-menu";
@@ -74,7 +67,10 @@ function getDefaultRow() {
         defaultOption.value = "-----";
         defaultOption.innerHTML = "----";
 
-        document.getElementById("comm-input-quant").onchange=getMenuPrice;//Quand on change la valeur de l'input
+        document.getElementById("comm-input-quant").onchange=function (){verifyInput();getMenuPrice();};//Quand on
+            // change la
+        // valeur
+        // de l'input
         // quantité le prix se met à jour
 
         selectMenu.onchange = function () {getMenuIngre() ;getMenuPrice();}; //Quand on sélectionne une pizza
@@ -84,8 +80,6 @@ function getDefaultRow() {
         document.getElementById("command-menu").appendChild(lblSelect);
         document.getElementById("command-menu").appendChild(selectMenu);
         document.getElementById("command-row").insertBefore(divSelectMenu, divPates);
-
-
 
         getAllMenu().forEach(function (item) {
             let options = document.createElement("option");
@@ -144,7 +138,7 @@ function getDefaultRow() {
 
         selectPate.onchange = getCustomPrice;
         selectSauce.onchange = getCustomPrice;
-        document.getElementById("comm-input-quant").onchange=getCustomPrice;
+        document.getElementById("comm-input-quant").onchange=function (){verifyInput();getCustomPrice();};
         btnAddIngre.onclick = addIngre;
         getCustomPrice();
     }
@@ -177,6 +171,7 @@ function getNewRow(){
     labelNewType.innerHTML="Catégorie:";
 
     let selectNewType= document.createElement("select");
+    document.getElementById("comm-select-type").disabled=true;
     document.getElementById("comm-select-type").id="row"+cpt+"type";
     selectNewType.className="comm-select-type";
     selectNewType.id="comm-select-type";
@@ -212,6 +207,7 @@ function getNewRow(){
 
   if( document.getElementById("comm-select-menu")) {
 
+      document.getElementById("comm-label-menu").id="0";
       document.getElementById("comm-select-menu").disabled=true;
       document.getElementById("comm-select-menu").id = "select" + cpt + "menu";
   }
@@ -318,7 +314,6 @@ function getNewRow(){
 
 //-----------------div7-------------------------------------
 
-    let inputOldQuant=document.getElementById("comm-input-quant");
     let divNewQuant= document.createElement("div");
     divNewQuant.className="col-md-1 command-quant";
     divNewQuant.style.border="2px solid black";
@@ -338,6 +333,7 @@ function getNewRow(){
     inputNewQuant.value="1";
     inputNewQuant.min="1";
     inputNewQuant.max="20";
+    inputNewQuant.onchange=verifyInput;
 
 
 
@@ -410,7 +406,6 @@ function deleteRow(){
 
 function deleteIngre(){
 
-
    let delIngre= this.previousSibling;
    delIngre.remove();
    this.remove();
@@ -473,8 +468,10 @@ function deleteIngre(){
 
         function getMenuIngre() {
 
-            let index = document.getElementById("comm-select-menu").selectedIndex;
-            let menuId = document.getElementById("comm-select-menu").options[index].value;
+            let selectMenu= document.getElementById("comm-select-menu");
+            let index = selectMenu.selectedIndex;
+            let menuId = selectMenu.options[index].value;
+            selectMenu.onchange=getNewMenu;
 
 
             let selectPate = document.getElementById("comm-select-pate");
@@ -548,7 +545,6 @@ function deleteIngre(){
             let lblPrix = document.getElementById("comm-lbl-prix");
             let divIngre = document.getElementById("command-ingre");
 
-            totalPrice += getIngById(idPate).prix + getIngById(idSauce).prix;
 
             let inputQuant = document.getElementById("comm-input-quant");
             let totalNumber = inputQuant.value;
@@ -563,7 +559,7 @@ function deleteIngre(){
 
             for (let i = 0; i < tabIngre.length; i++) {
 
-                totalPrice += getIngById(tabIngre[i]).prix;
+                totalPrice += getIngById(tabIngre[i].value).prix;
             }
 
             totalPrice = (totalPrice * totalNumber).toFixed(2);
@@ -607,7 +603,6 @@ function deleteIngre(){
 
                 let tabIngre = [];
                 let totalPrice = 0;
-
                 tabIngre.push(getIngById(pateId));
                 tabIngre.push(getIngById(sauceId));
 
@@ -615,10 +610,10 @@ function deleteIngre(){
 
                 let tabIngreOptions = Object.values(divIngre[0].getElementsByClassName("newIngre"));
 
+
                 tabIngreOptions.forEach(function (item) {
 
-                    tabIngre.push(getIngById(parseInt(item.value)));
-
+                    tabIngre.push(getIngById(item.value));
                 });
 
                 tabIngre.forEach(function (item) {
@@ -634,6 +629,7 @@ function deleteIngre(){
                     quantite: quantity,
                     name: "Custom"
                 };
+
 
                 totalCommande.push(pizza);
                 insertCommande();
@@ -681,6 +677,7 @@ function deleteIngre(){
 
                 tdTotalPrice.innerHTML = " ";
             }
+
         }
 
         function selectAfter() {
@@ -697,6 +694,7 @@ function deleteIngre(){
 
                 inputQuant.title = "Veuillez sélectionner une valeur positive";
                 inputQuant.value = 1;
+                inputQuant.innerHTML="1";
             }
 
     }

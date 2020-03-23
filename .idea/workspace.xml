@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="ed5754b6-886a-47a3-8647-7694cbb13eab" name="Default Changelist" comment="">
 <<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/html/Commandes.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/Commandes.html" afterDir="false" />
@@ -18,6 +19,9 @@
       <change beforePath="$PROJECT_DIR$/script/JSON_LIST.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/JSON_LIST.js" afterDir="false" />
 >>>>>>> Stashed changes
     </list>
+=======
+    <list default="true" id="ed5754b6-886a-47a3-8647-7694cbb13eab" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +90,7 @@
       <updated>1574970108306</updated>
       <workItem from="1574970110986" duration="818000" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
       <workItem from="1580405500236" duration="7357000" />
       <workItem from="1581008599691" duration="2717000" />
@@ -100,6 +105,10 @@
       <workItem from="1584018924094" duration="822000" />
       <workItem from="1584033197009" duration="3842000" />
       <workItem from="1584291253658" duration="1443000" />
+>>>>>>> Stashed changes
+=======
+      <workItem from="1580405500236" duration="6607000" />
+      <workItem from="1584296727583" duration="92000" />
 >>>>>>> Stashed changes
     </task>
     <servers />
@@ -118,4 +127,18 @@
       </map>
     </option>
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/script/Commmandes.js</url>
+          <line>655</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+>>>>>>> Stashed changes
 </project>
