@@ -21,6 +21,9 @@ body{
 
 .navbar{
     padding: 0 42px;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .navbar.bg-dark{
@@ -232,6 +235,9 @@ iframe{
     background-color: #1b1c20;
     color: #fff;
     padding: 50px 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 /* Footer Titles */
@@ -317,13 +323,13 @@ ul.social-icon, ul.payement{
 
 #command-row{
 
-    border: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 .row div{
 
-    margin-right: 1%;
-    border: 2px solid black;
+    /*margin-right: 1%;*/
+    /*border-bottom: 2px solid black;*/
 }
 
 #comm-lbl-prix{
@@ -355,7 +361,7 @@ table{
 
 td{
 
-    border: 2px solid black;
+    /*border: 2px solid black;*/
 }
 th{
 
@@ -365,4 +371,16 @@ th{
 tbody{
 
     border: 2px solid black;
+}
+
+.col-md-4{
+    margin-bottom: 5px;
+}
+
+#beg{
+    height: 70%;
+}
+
+#homePay{
+    height: 75vh;
 }
