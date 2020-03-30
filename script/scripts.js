@@ -3,7 +3,7 @@ function popConfirmation(){
         window.alert("There is nothing in your commande");
     }
     else{
-        let orderString = "Confirmer la commande ?\n";
+        let orderString = "Confirmer la commande ?\nEn cliquant sur OK, vous serez redirigé vers la page de paiement.\n";
         let totalPrice = 0;
         for (let index = 0; index < totalCommande.length; index++) {
             const element = totalCommande[index];
@@ -20,7 +20,6 @@ function popConfirmation(){
                 sessionStorage.setItem('aPostcode', document.getElementById('postcode').value);
                 sessionStorage.setItem('aCity', document.getElementById('city').value);
             }
-            window.alert("Merci d'avoir commandé une pizza d'Alex.\n Vous allez maintenant être redirigé vers la page de paiement.");
             window.location.href = "./ChoixPaiement.html";
         }
     }
@@ -43,7 +42,7 @@ function evalPostcode(){
     var pcfield = document.getElementById('postcode');
     var checkBox = document.getElementById('checkcheck');
     if (checkBox.checked == true){
-        if (pcfield.value < 1000 || pcfield.value > 5000){
+        if (pcfield.value < 1000 || pcfield.value > 9999){
             window.alert("Ce code postal n'est pas dans notre zone de livraison!");
         }else{
             popConfirmation();
