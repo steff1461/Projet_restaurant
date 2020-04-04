@@ -52,10 +52,20 @@
     <h2>Choisissez votre manière de payer svp</h2>
 
     <div id="priceBox"></div>
+    <div id="addressBox"></div>
     <script>
         var totalPrice = sessionStorage.getItem('totalPrice');
+        var aPostcode = sessionStorage.getItem('aPostcode');
+        var aStreet = sessionStorage.getItem('aStreet');
+        var aCity = sessionStorage.getItem('aCity');
+        var aNumber = sessionStorage.getItem('aNumber');
+
+        let addressBox = document.getElementById('addressBox');
+        if (aPostcode != "") {
+            addressBox.innerHTML = "<b>Delivery Address:</b> \n" + aNumber + " " + aStreet + ", " + aPostcode + " " + aCity;
+        }
         let priceBox = document.getElementById('priceBox');
-        priceBox.innerHTML = "Price to pay: " + totalPrice;
+        priceBox.innerHTML = "<b>Price to pay:</b> " + totalPrice;
     </script>
 
     <!-- Trigger the modal with a button -->
