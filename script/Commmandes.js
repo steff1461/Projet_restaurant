@@ -2,9 +2,15 @@
 //----------------VARIABLES------------------------------
 //------------------------------------------------------
 let selectType= document.getElementById("comm-select-type");
+let inputQuant=document.getElementById("comm-input-quant");
+let btnAdd=document.getElementById("comm-btn-add");
+
+
 let totalCommande=[];
 let cpt=0;
 
+selectType.onchange=getDefaultRow;
+btnAdd.onclick=function (){getNewRow(); getPizza(this);};
 let inputQuant=document.getElementById("comm-input-quant");
 inputQuant.onchange=verifyInput;
 
@@ -25,8 +31,6 @@ function verifyInput(){
         inputQuant.value =1;
 }
 }
-selectType.onchange=getDefaultRow;
-document.getElementById("comm-btn-add").onclick=function (){getNewRow(); getPizza(this);};
 
 
 //-------------------------------------------
@@ -55,12 +59,15 @@ function getDefaultRow() {
     selectSauce.style.width = "100%";
     divSauces.appendChild(selectSauce);
 
-    let index = document.getElementById("comm-select-type").selectedIndex;
-    let options = selectType.options[index];
+    let selectType=document.getElementById("comm-select-type");
+    selectType.onchange=selectAfter;
+
+    let indexType = selectType.selectedIndex;
+    let optionType = selectType.options[indexType];
 
 //--------MENU---------------------------------------
     //Si menu est sélectionné
-    if (options.value === "Menu") {
+    if (optionType.value === "Menu") {
 
         if(document.getElementById("comm-label-menu")) {
             document.getElementById("comm-label-menu").id = "0";
@@ -79,12 +86,13 @@ function getDefaultRow() {
         defaultOption.value = "-----";
         defaultOption.innerHTML = "----";
 
-        document.getElementById("comm-input-quant").onchange=verifyInput;//Quand on
-        // change la valeur de
-        // l'input
+        document.getElementById("comm-input-quant").onchange=function (){verifyInput();getMenuPrice();};//Quand on
+            // change la
+        // valeur
+        // de l'input
         // quantité le prix se met à jour
 
-        selectMenu.onchange = function () {getMenuIngre();getMenuPrice()}; //Quand on sélectionne une pizza
+        selectMenu.onchange = function () {getMenuIngre() ;getMenuPrice();}; //Quand on sélectionne une pizza
         // "préfaite" les ingrédients s'affiche et on obtient le prix de la pizza
 
         selectMenu.appendChild(defaultOption);
@@ -92,10 +100,9 @@ function getDefaultRow() {
         document.getElementById("command-menu").appendChild(selectMenu);
         document.getElementById("command-row").insertBefore(divSelectMenu, divPates);
 
-        get_Allmenu().forEach(function (item) {
-
+        getAllMenu().forEach(function (item) {
             let options = document.createElement("option");
-            options.value = item.id;
+            options.value = item._id;
             options.innerHTML = item.name;
             selectMenu.appendChild(options);
         });
@@ -103,6 +110,7 @@ function getDefaultRow() {
 
     // ---------CUSTOM-------------------
         //si custom est sélectionné
+
 
     else if (options.value === "Custom") {
         document.getElementById("comm-select-type").onchange=selectAfter;
@@ -115,30 +123,28 @@ function getDefaultRow() {
 
         selectIngre.appendChild(defaultValue);
 
-        get_Ingrebycat(0).forEach(function (item) {
+        getIngByCat("pate").forEach(function (item) {
 
             let optionPate = document.createElement("option");
-            optionPate.value = item.id;
+            optionPate.value = item._id;
             optionPate.innerHTML = item.name;
             selectPate.appendChild(optionPate);
         });
 
-        get_Ingrebycat(2).forEach(function (item) {
+        getIngByCat("sauce").forEach(function (item) {
 
             let optionSauce = document.createElement("option");
-            optionSauce.value = item.id;
+            optionSauce.value = item._id;
             optionSauce.innerHTML = item.name;
             selectSauce.appendChild(optionSauce);
         });
 
-        get_Allingre().forEach(function (item) {
+        getAllIng().forEach(function (item) {
 
-
-            if (item.cat_id !== 0 && item.cat_id !== 2) {
-
+            if (item.categorie !== "pate" && item.categorie !== "sauce") {
 
                 let optionIngre = document.createElement("option");
-                optionIngre.value = item.id;
+                optionIngre.value = item._id;
                 optionIngre.innerHTML = item.name;
                 selectIngre.appendChild(optionIngre);
             }
@@ -154,9 +160,10 @@ function getDefaultRow() {
 
         selectPate.onchange = getCustomPrice;
         selectSauce.onchange = getCustomPrice;
+
         document.getElementById("comm-input-quant").onchange=function (){getCustomPrice();verifyInput();};
         btnAddIngre.onclick = addIngre;
-        getCustomPrice()
+        getCustomPrice();
     }
 }
 //--------------------------------------------
@@ -223,6 +230,8 @@ function getNewRow(){
 
   if( document.getElementById("comm-select-menu")) {
 
+      document.getElementById("comm-label-menu").id="0";
+      document.getElementById("comm-select-menu").disabled=true;
       document.getElementById("comm-select-menu").id = "select" + cpt + "menu";
   }
 //-----------------div3-------------------------------------
@@ -237,6 +246,7 @@ function getNewRow(){
     let lblNewPate=document.createElement("label");
     lblNewPate.innerHTML="Votre pâte:";
     divNewPate.appendChild(lblNewPate);
+    document.getElementById("comm-select-pate").disabled=true;
     document.getElementById("comm-select-pate").id="select"+cpt+"pate";
 
 
@@ -253,6 +263,7 @@ function getNewRow(){
     lblNewSauce.innerHTML="Votre sauce:";
     divNewSauce.appendChild(lblNewSauce);
 
+    document.getElementById("comm-select-sauce").disabled=true;
     document.getElementById("comm-select-sauce").id="select"+cpt+"sauce";
 
 
@@ -277,6 +288,7 @@ function getNewRow(){
 
     if(selectIngre){
 
+        selectIngre.disabled=true;
         selectIngre.id="null";
     }
 
@@ -325,7 +337,6 @@ function getNewRow(){
 
 //-----------------div7-------------------------------------
 
-    let inputOldQuant=document.getElementById("comm-input-quant");
     let divNewQuant= document.createElement("div");
     divNewQuant.className="col-md-1 command-quant";
     /*divNewQuant.style.border="2px solid black";*/
@@ -345,6 +356,7 @@ function getNewRow(){
     inputNewQuant.value="1";
     inputNewQuant.min="1";
     inputNewQuant.max="20";
+    inputNewQuant.onchange=verifyInput;
 
 
 
@@ -417,7 +429,6 @@ function deleteRow(){
 
 function deleteIngre(){
 
-
    let delIngre= this.previousSibling;
    delIngre.remove();
    this.remove();
@@ -436,7 +447,7 @@ function deleteIngre(){
         let selectedOption= selectIngre.options[index];
 
         if(selectedOption.innerHTML!="-----") {
-            let id = parseInt(selectedOption.value);
+            let id = selectedOption.value;
             let selectNewIngre = document.createElement("select");
             let option = document.createElement("option");
             let btnDel = document.createElement("button");
@@ -444,8 +455,8 @@ function deleteIngre(){
             btnDel.className = "comm-btnDel";
             btnDel.onclick = deleteIngre;
 
-            option.value = get_Ingrebyid(id).id;
-            option.innerHTML = get_Ingrebyid(id).name;
+            option.value = getIngById(id)._id;
+            option.innerHTML = getIngById(id).name;
             option.className = "newIngre";
 
             selectNewIngre.appendChild(option);
@@ -483,47 +494,70 @@ function getNewMenu(){
         let menuOption= document.getElementById("comm-select-menu").options[index].value;
         let menuId =parseInt(menuOption);
 
-        let selectPate = document.getElementById("comm-select-pate");
-        let selectSauce = document.getElementById("comm-select-sauce");
 
-        let optionPate = document.createElement("option");
-        selectPate.appendChild(optionPate);
 
-        let optionSauce = document.createElement("option");
-        selectSauce.appendChild(optionSauce);
+        function getNewMenu() {
 
-        get_Menubyid(menuId).ingredients.forEach(function (item) {
+            document.getElementById("comm-select-pate").remove();
+            document.getElementById("comm-select-menu").remove();
+            document.getElementById("comm-select-sauce").remove();
+            document.getElementById("comm-label-menu").remove();
+            let ingre = Object.values(document.getElementById("command-ingre").getElementsByTagName("select"));
 
-        let divIngre = document.getElementById("command-ingre");
+            ingre.forEach(function (item) {
 
-        if (get_Ingrebyid(item).cat_id === 0) {
+                item.remove();
+            });
 
-            optionPate.value = get_Ingrebyid(item).id;
-            optionPate.innerHTML = get_Ingrebyid(item).name;
+            getDefaultRow();
         }
 
-        else if (get_Ingrebyid(item).cat_id === 2) {
+        function getMenuIngre() {
 
-            optionSauce.value = get_Ingrebyid(item).id;
-            optionSauce.innerHTML = get_Ingrebyid(item).name;
+            let selectMenu= document.getElementById("comm-select-menu");
+            let index = selectMenu.selectedIndex;
+            let menuId = selectMenu.options[index].value;
+            selectMenu.onchange=getNewMenu;
+
+
+            let selectPate = document.getElementById("comm-select-pate");
+            let selectSauce = document.getElementById("comm-select-sauce");
+
+            let optionPate = document.createElement("option");
+            selectPate.appendChild(optionPate);
+
+            let optionSauce = document.createElement("option");
+            selectSauce.appendChild(optionSauce);
+
+            getMenuById(menuId).composition.forEach(function (item) {
+
+                let divIngre = document.getElementById("command-ingre");
+
+                if (getIngById(item._id).categorie === "pate") {
+
+                    optionPate.value = getIngById(item).id;
+                    optionPate.innerHTML = getIngById(item).name;
+                } else if (getIngById(item._id).categorie === "sauce") {
+
+                    optionSauce.value = getIngById(item).id;
+                    optionSauce.innerHTML = getIngById(item).name;
+                } else {
+
+                    let select = document.createElement("select");
+                    let option = document.createElement("option");
+                    option.value = getIngById(item._id)._id;
+                    option.innerHTML = getIngById(item._id).name;
+                    select.appendChild(option);
+                    divIngre.appendChild(select);
+                }
+            });
         }
-
-        else {
-
-            let select = document.createElement("select");
-            let option = document.createElement("option");
-            option.value = get_Ingrebyid(item).id;
-            option.innerHTML = get_Ingrebyid(item).name;
-            select.appendChild(option);
-            divIngre.appendChild(select);
-        }
-    });
-}
 
 //----------------------------------------------------
 //-----------MENU-PRICE-------------------------------
 //----------------------------------------------------
-function getMenuPrice() {
+        function getMenuPrice() {
+
 
     let selectMenu=document.getElementById("comm-select-menu");
     let index = selectMenu.selectedIndex;
@@ -536,22 +570,24 @@ function getMenuPrice() {
         totalNumber=1;
     }
 
-    get_Menubyid(id).ingredients.forEach(function (item) {
-        totalPrice+=get_Ingrebyid(item).prix;
-    });
+            getMenuById(id).composition.forEach(function (item) {
+                totalPrice += getIngById(item._id).prix;
+            });
+
 
     totalPrice=(totalPrice*totalNumber).toFixed(2);
 
-    let lblPrix=document.getElementById("comm-lbl-prix");
-    lblPrix.value=totalPrice;
-    lblPrix.innerHTML=totalPrice;
-}
+            let lblPrix = document.getElementById("comm-lbl-prix");
+            lblPrix.value = totalPrice;
+            lblPrix.innerHTML = totalPrice;
+        }
 
 //----------------------------------------------
 //----------CUSTOM-PRICE------------------------
 //----------------------------------------------
 
-function getCustomPrice() {
+        function getCustomPrice() {
+
 
     let totalPrice = 0;
     let selectPate= document.getElementById("comm-select-pate");
@@ -570,137 +606,159 @@ function getCustomPrice() {
     }
     totalPrice += get_Ingrebyid(idPate).prix + get_Ingrebyid(idSauce).prix;
 
-    let tabIngre =divIngre.getElementsByClassName("newIngre");
+            let inputQuant = document.getElementById("comm-input-quant");
+            let totalNumber = inputQuant.value;
 
-    for (let i = 0; i <tabIngre.length ; i++) {
+            if (totalNumber < 1) {
 
-        totalPrice+=get_Ingrebyid(tabIngre[i]).prix;
-    }
+                totalNumber = 1;
+            }
+            totalPrice += getIngById(idPate).prix + getIngById(idSauce).prix;
+
 
     totalPrice=(totalPrice*totalNumber).toFixed(2);
     lblPrix.value=totalPrice;
     lblPrix.innerHTML=totalPrice.toString();
 }
 
-function getPizza(arg) {
+            for (let i = 0; i < tabIngre.length; i++) {
 
-    let row= arg.parentNode.parentNode;
-    let selectType= Object.values(row.getElementsByClassName("comm-select-type"));
-    let selectedindex= selectType[0].selectedIndex;
-    let inputQuantity= Object.values(row.getElementsByClassName("comm-input-quant"));
-    let quantity= inputQuantity[0].value;
+                totalPrice += getIngById(tabIngre[i].value).prix;
+            }
 
-    if(selectedindex===1){
-
-        let selectMenu=Object.values(row.getElementsByClassName("comm-select-menu"));
-        let index= selectMenu[0].selectedIndex;
-        let menuId= selectMenu[0].options[index].value;
-        let pizza={
-
-            id:cpt,
-            prix: getMenuPricebyId(parseInt(menuId)),
-            ingredients:getMenuIngrebyId(parseInt(menuId)),
-            name:get_Menubyid(parseInt(menuId)).name,
-            quantite:quantity
-        };
-        totalCommande.push(pizza);
-        insertCommande();
-
-    }
-
-    else if(selectedindex===2){
-
-        let selectPate= Object.values(row.getElementsByClassName("comm-select-pate"));
-        let indexPate= selectPate[0].selectedIndex;
-        let pateId = parseInt(selectPate[0].options[indexPate].value);
-
-        let selectSauce= Object.values(row.getElementsByClassName("comm-select-sauce"));
-        let indexSauce= selectSauce[0].selectedIndex;
-        let sauceId = parseInt(selectSauce[0].options[indexSauce].value);
-
-        let tabIngre=[];
-        let totalPrice=0;
-
-
-        tabIngre.push(get_Ingrebyid(pateId));
-        tabIngre.push(get_Ingrebyid(sauceId));
-
-
-        let divIngre= Object.values(row.getElementsByClassName("col-md-4 command-ingre"));
-
-        let tabIngreOptions=Object.values(divIngre[0].getElementsByClassName("newIngre"));
-
-
-        tabIngreOptions.forEach(function (item) {
-
-           tabIngre.push(get_Ingrebyid(parseInt(item.value)));
-
-        });
-
-        tabIngre.forEach(function(item){
-
-           totalPrice+=item.prix;
-        });
-
-        let pizza={
-
-            id:cpt,
-            ingredients:tabIngre,
-            prix:totalPrice,
-            quantite:quantity,
-            name:"Custom"
-        };
-
-        totalCommande.push(pizza);
-        insertCommande();
-    }
-}
-
-function insertCommande(){
-
-    let totalTab= document.getElementById("comm-panier");
-
-    let totalPrice=0;
-    let totalRow=Object.values(totalTab.getElementsByClassName("comm-panier-row"));
-    let tdTotalPrice= document.getElementById("comm-total-panier");
-
-    if(totalRow){
-        for (let keys in totalRow){
-
-          totalRow[keys].remove();
+            totalPrice = (totalPrice * totalNumber).toFixed(2);
+            lblPrix.value = totalPrice;
+            lblPrix.innerHTML = totalPrice.toString();
         }
+
+        function getPizza(arg) {
+
+            let row = arg.parentNode.parentNode;
+            let selectType = Object.values(row.getElementsByClassName("comm-select-type"));
+            let selectedindex = selectType[0].selectedIndex;
+            let inputQuantity = Object.values(row.getElementsByClassName("comm-input-quant"));
+            let quantity = inputQuantity[0].value;
+
+            if (selectedindex === 1) {
+
+                let selectMenu = Object.values(row.getElementsByClassName("comm-select-menu"));
+                let index = selectMenu[0].selectedIndex;
+                let menuId = selectMenu[0].options[index].value;
+                let pizza = {
+
+                    id: cpt,
+                    prix: getMenuPricebyId(menuId),
+                    ingredients: getMenuIngrebyId(menuId),
+                    name: getMenuById(menuId).name,
+                    quantite: quantity
+                };
+                totalCommande.push(pizza);
+                insertCommande();
+
+            } else if (selectedindex === 2) {
+
+                let selectPate = Object.values(row.getElementsByClassName("comm-select-pate"));
+                let indexPate = selectPate[0].selectedIndex;
+                let pateId = selectPate[0].options[indexPate].value;
+
+                let selectSauce = Object.values(row.getElementsByClassName("comm-select-sauce"));
+                let indexSauce = selectSauce[0].selectedIndex;
+                let sauceId = selectSauce[0].options[indexSauce].value;
+
+                let tabIngre = [];
+                let totalPrice = 0;
+                tabIngre.push(getIngById(pateId));
+                tabIngre.push(getIngById(sauceId));
+
+                let divIngre = Object.values(row.getElementsByClassName("col-md-4 command-ingre"));
+
+                let tabIngreOptions = Object.values(divIngre[0].getElementsByClassName("newIngre"));
+
+
+                tabIngreOptions.forEach(function (item) {
+
+                    tabIngre.push(getIngById(item.value));
+                });
+
+                tabIngre.forEach(function (item) {
+
+                    totalPrice += item.prix;
+                });
+
+                let pizza = {
+
+                    id: cpt,
+                    ingredients: tabIngre,
+                    prix: totalPrice,
+                    quantite: quantity,
+                    name: "Custom"
+                };
+
+
+                totalCommande.push(pizza);
+                insertCommande();
+            }
+        }
+
+        function insertCommande() {
+
+            let totalTab = document.getElementById("comm-panier");
+
+            let totalPrice = 0;
+            let totalRow = Object.values(totalTab.getElementsByClassName("comm-panier-row"));
+            let tdTotalPrice = document.getElementById("comm-total-panier");
+
+            if (totalRow) {
+                for (let keys in totalRow) {
+
+                    totalRow[keys].remove();
+                }
+            }
+            totalCommande.forEach(function (item) {
+
+                let row = document.createElement("tr");
+                row.className = "comm-panier-row";
+                totalTab.appendChild(row);
+
+
+                totalPrice += (item.prix * item.quantite);
+                tdTotalPrice.innerHTML = totalPrice.toFixed(2);
+
+                let tdName = document.createElement("td");
+                let tdPrice = document.createElement("td");
+                let tdQuant = document.createElement("td");
+
+                tdName.innerHTML = item.name;
+                tdPrice.innerHTML = (item.prix).toFixed(2);
+                tdQuant.innerHTML = item.quantite;
+
+                row.appendChild(tdName);
+                row.appendChild(tdPrice);
+                row.appendChild(tdQuant);
+            });
+
+            if (totalCommande.length === 0) {
+
+                tdTotalPrice.innerHTML = " ";
+            }
+
+        }
+
+        function selectAfter() {
+
+            getNewRow();
+            document.getElementById("row" + cpt).remove();
+        }
+
+        function verifyInput() {
+
+            let inputQuant = document.getElementById("comm-input-quant");
+
+            if (inputQuant.value < 1) {
+
+                inputQuant.title = "Veuillez sélectionner une valeur positive";
+                inputQuant.value = 1;
+                inputQuant.innerHTML="1";
+            }
+
     }
-    totalCommande.forEach(function(item){
-
-        let row= document.createElement("tr");
-        row.className="comm-panier-row";
-        totalTab.appendChild(row);
-
-
-            totalPrice+=(item.prix*item.quantite);
-            tdTotalPrice.innerHTML=totalPrice.toFixed(2);
-
-
-        let tdName=document.createElement("td");
-            let tdPrice=document.createElement("td");
-            let tdQuant=document.createElement("td");
-
-            tdName.innerHTML=item.name;
-            tdPrice.innerHTML=(item.prix).toFixed(2);
-            tdQuant.innerHTML=item.quantite;
-
-            row.appendChild(tdName);
-            row.appendChild(tdPrice);
-            row.appendChild(tdQuant);
-    });
-
-    if(totalCommande.length===0) {
-
-        tdTotalPrice.innerHTML=" ";
-    }
-}
-
-
-
-
-
