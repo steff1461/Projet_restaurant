@@ -1,5 +1,8 @@
+
+
 let tab_temp_result=[];
 let temp_result;
+let ingredients;
 
 
 let menu = [
@@ -310,22 +313,64 @@ function getAllCat() {
 
 function getCatById(arg){
 
-    categories.forEach(function (item) {
-        if(item.id===arg){
+    $(document).ready(function() {
 
-            temp_result=item;
-        }
+        $.ajax({
+
+            url: 'http://localhost:3000/getPizza',
+            type: 'GET',
+            dataType: 'json',
+
+            success: function (response) {
+
+
+                menu=response;
+            },
+
+            error: function () {
+
+                alert("erreur");
+            }
+        });
     });
-    return temp_result;
-}
+
+
+
+   $(document).ready(function(){
+
+        $.ajax({
+
+            url:'http://localhost:3000/getIngredient',
+            type:'GET',
+            dataType:'json',
+            success : function (response) {
+
+                ingredients=response;
+            },
+
+            error : function () {
+
+            },
+
+            complete : function () {
+
+            }
+        });
+
+    });
+
+
+
 
 function getAllIng(){
+
     return ingredients;
 }
 
 function getIngById(arg){
 
     ingredients.forEach(function (item) {
+
         if(item.id===arg){
             temp_result=item;
         }
@@ -339,7 +384,8 @@ function getIngByCat(arg){
     tab_temp_result=[];
     ingredients.forEach(function (item) {
 
-        if(item.cat_id===arg){
+
+        if(item.categorie===arg){
             tab_temp_result.push(item);
         }
     });
@@ -356,8 +402,7 @@ function getMenuById(arg){
 
     menu.forEach( function (item) {
 
-        if(item.id===arg){
-
+        if(item._id===arg){
             temp_result=item;
         }
     });
@@ -367,10 +412,10 @@ function getMenuById(arg){
 
 function getMenuIngrebyId( arg){
     let tabIngre=[];
-    get_Menubyid(arg).ingredients.forEach(function(item){
+    getMenuById(arg).composition.forEach(function(item){
 
 
-        tabIngre.push(get_Ingrebyid(item));
+        tabIngre.push(getIngById(item._id));
     });
 
     return tabIngre;
@@ -388,30 +433,5 @@ function getMenuPricebyId(arg){
 }
 
 
-function create_ingre(name,prix,cat_id){
 
-    let ingre={
-
-        id:get_Allingre().length,
-        name:name,
-        prix:prix,
-        cat_id:cat_id
-    };
-
-    ingredients.push(ingre);
-}
-
-
-function update_ingr(id,name,prix){
-
-
-    get_Ingrebyid(id).name=name;
-    get_Ingrebyid(id).prix=prix;
-}
-//
-// get_Menubyid(2).ingredients.forEach(function (item) {
-//
-//     console.log(get_Ingrebyid(item).name);
-//
-// });
 
