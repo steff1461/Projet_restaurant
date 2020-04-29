@@ -171,7 +171,7 @@ function getNewRow(){
 
     let divNewRow=document.createElement("div");
     divNewRow.className="row container-fluid";
-    divNewRow.style.border="2px solid black";
+    divNewRow.style.borderTop="2px solid black";
     document.getElementById("command-row").id="row"+cpt;
     divNewRow.id="command-row";
 
@@ -179,7 +179,7 @@ function getNewRow(){
 
     let divNewType=document.createElement("div");
     divNewType.className="col-md-1 command-type";
-    divNewType.style.border="2px solid black";
+    /*divNewType.style.border="2px solid black";*/
     divNewType.style.marginRight="1%";
 
     let labelNewType= document.createElement("label");
@@ -215,7 +215,7 @@ function getNewRow(){
 
     let divNewMenu=document.createElement("div");
     divNewMenu.className="col-md-1 command-menu";
-    divNewMenu.style.border="2px solid black";
+    /*divNewMenu.style.border="2px solid black";*/
     divNewMenu.style.marginRight="1%";
 
     document.getElementById("command-menu").id="row"+cpt+"menu";
@@ -229,7 +229,7 @@ function getNewRow(){
 
     let divNewPate=document.createElement("div");
     divNewPate.className="col-md-1 command-pate";
-    divNewPate.style.border="2px solid black";
+    /*divNewPate.style.border="2px solid black";*/
     divNewPate.style.marginRight="1%";
     document.getElementById("command-pate").id="row"+cpt+"pate";
     divNewPate.id="command-pate";
@@ -244,7 +244,7 @@ function getNewRow(){
 
     let divNewSauce=document.createElement("div");
     divNewSauce.className="col-md-1 command-sauce";
-    divNewSauce.style.border="2px solid black";
+    /*divNewSauce.style.border="2px solid black";*/
     divNewSauce.style.marginRight="1%";
     document.getElementById("command-sauce").id="row"+cpt+"sauce";
     divNewSauce.id="command-sauce";
@@ -261,7 +261,7 @@ function getNewRow(){
 
     let divNewIngre=document.createElement("div");
     divNewIngre.className="col-md-4 command-ingre";
-    divNewIngre.style.border="2px solid black";
+    /*divNewIngre.style.border="2px solid black";*/
     divNewIngre.style.marginRight="1%";
 
     document.getElementById("command-ingre").id="row"+cpt+"ingre";
@@ -302,7 +302,7 @@ function getNewRow(){
 
     let divNewPrix=document.createElement("div");
     divNewPrix.className="col-md-1 command-prix";
-    divNewPrix.style.border="2px solid black";
+    /*divNewPrix.style.border="2px solid black";*/
     divNewPrix.style.marginRight="1%";
     document.getElementById("command-prix").id="prix"+cpt+"total";
     divNewPrix.id="command-prix";
@@ -328,7 +328,7 @@ function getNewRow(){
     let inputOldQuant=document.getElementById("comm-input-quant");
     let divNewQuant= document.createElement("div");
     divNewQuant.className="col-md-1 command-quant";
-    divNewQuant.style.border="2px solid black";
+    /*divNewQuant.style.border="2px solid black";*/
     divNewQuant.style.marginRight="1%";
 
     let inputNewQuant= document.createElement("input");
@@ -352,7 +352,7 @@ function getNewRow(){
 
     let divNewAdd=document.createElement("div");
     divNewAdd.className="col-md-1";
-    divNewAdd.style.border="2px solid black";
+    /*divNewAdd.style.border="2px solid black";*/
     divNewAdd.style.marginRight="1%";
 
     let btnNewAdd=document.createElement("button");

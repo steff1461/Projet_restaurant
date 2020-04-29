@@ -304,12 +304,11 @@ let ingredients = [
     }
 ];
 
-function get_Allcat() {
-
+function getAllCat() {
     return categories;
 }
 
-function get_Catbyid(arg){
+function getCatById(arg){
 
     categories.forEach(function (item) {
         if(item.id===arg){
@@ -320,16 +319,14 @@ function get_Catbyid(arg){
     return temp_result;
 }
 
-function get_Allingre(){
-
+function getAllIng(){
     return ingredients;
 }
 
-function get_Ingrebyid(arg){
+function getIngById(arg){
 
     ingredients.forEach(function (item) {
         if(item.id===arg){
-
             temp_result=item;
         }
     });
@@ -338,7 +335,7 @@ function get_Ingrebyid(arg){
 }
 
 
-function get_Ingrebycat(arg){
+function getIngByCat(arg){
     tab_temp_result=[];
     ingredients.forEach(function (item) {
 
@@ -349,12 +346,12 @@ function get_Ingrebycat(arg){
     return tab_temp_result;
 }
 
-function get_Allmenu(){
+function getAllMenu(){
 
     return menu;
 }
 
-function get_Menubyid(arg){
+function getMenuById(arg){
 
 
     menu.forEach( function (item) {
