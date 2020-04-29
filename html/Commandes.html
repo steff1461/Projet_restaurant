@@ -27,6 +27,9 @@
 </head>
 <body>
 
+    <script>
+        sessionStorage.clear();
+    </script>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
     <div class="container-fluid">
@@ -65,8 +68,7 @@
 
 
 <!--Row commande-->
-<main id="beg">
-
+<main id="beg" style="min-height: 70vh;">
 
         <div class="row container-fluid" id="command-row">
 
@@ -98,7 +100,8 @@
 
 
             <div class="col-md-1 command-quant" id="command-quant">
-                <input type="number" id="comm-input-quant" class="comm-input-quant" min="1" max="20" value="1" >
+                <label for="comm-input-quant"></label>
+                <input type="number" id="comm-input-quant" class="comm-input-quant" min="1" max="20" value="1"  >
             </div>
 
             <div class="col-md-1 command-prix" id="command-prix">
@@ -121,14 +124,19 @@
 
         <div class="col-md-7">
             <h3>
-                Note.
+                <input type="checkbox" id="checkcheck" onclick="showAddress()">Livraison à domicile ?</input> 
             </h3>
-
-            <label>
-                <textarea >
-                    Inserer ici des details de la commande.
-                </textarea>
-            </label>
+            <div id="address" style="display:none">
+                <label>Rue</label>
+                <input type="text" id="street" string="test">
+                <label>Numéro</label>
+                <input type="text" id="number" string="test">
+                <br>
+                <label>Code postal</label>
+                <input type="text" id="postcode" string="test">
+                <label>Ville</label>
+                <input type="text" id="city" string="test">
+            </div>
         </div>
 
         <div class="col-md-4">
@@ -161,8 +169,9 @@
                     <td id="comm-total-panier"></td>
                 </tr>
                 </tfoot>
+                
             </table>
-
+            <button  onclick="evalPostcode()">Confirmer la commande</button>
         </div>
 
 
@@ -175,7 +184,7 @@
 <!--Start Footer-->
 <footer id="footer">
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
 
             <div class="col-md-4 marginR">
@@ -230,5 +239,7 @@
 
 <script src="../script/Commmandes.js" type=""></script>
 
+<script src="../script/JSON_LIST.js" type=""></script>
+<script src="../script/scripts.js" type=""></script>
 </body>
 </html>
